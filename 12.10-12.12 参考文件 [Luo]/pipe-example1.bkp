@@ -1,0 +1,840 @@
+MM "30.0" FLAVOR "NO" VERSION "30.0" DATETIME "Fri Nov 01 15:37:20 2019" 
+MACHINE "WIN-NT/VC"  ; 
+startlibrary
+version1
+NumLibs = 2
+Built-In
+ACM Built-In
+NumCats = 10
+Mixers/Splitters
+active
+Separators
+active
+Exchangers
+active
+Columns
+active
+Reactors
+active
+Pressure Changers
+active
+Manipulators
+active
+Solids
+active
+Solids Separators
+active
+User Models
+active
+endlibrary
+; 
+1
+>VERSION 0
+PIPE-1
+Pipe
+Built-In
+PIPE
+? SETUP MAIN ? \ TITLE TITLE = "Pump -- Example 1" \ \ SIMULATE INTERACTIVE
+ = NO MOLEFLOW = MOLEFLOW MASSFLOW = MASSFLOW TFFFILE = "GEN_M" VISITED = 1 \ 
+? SETUP GLOBAL ? \ "IN-UNITS" INSET = "SI-CBAR" \ \ "STREAM-CLASS" SCLASS = 
+CONVEN BASIS = MASS \ ? SETUP DIAGNOSTICS ? ? SETUP "SIM-OPTIONS" ? ; 
+"SI-CBAR_MOLE" ; ? SETUP "UNITS-SET" METCBAR ? \ DESCRIPTION DESCRIPTION = "" 
+\ \ MMLOCAL \ \ UNITSET BASESET = MET ( 3 3 3 3 3 3 3 3 3 3 3 7 7 3 3 5 3 3 3 
+5 3 4 3 3 3 3 1 3 3 3 4 3 7 3 3 3 1 1 4 4 3 3 3 3 3 3 3 3 3 3 3 3 5 3 3 3 3 3 
+3 3 3 3 3 4 3 3 3 3 3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 ) \ 
+? SETUP "UNITS-SET" METCKGCM ? \ DESCRIPTION DESCRIPTION = "" \ \ MMLOCAL \ 
+\ UNITSET BASESET = MET ( 3 3 3 3 3 3 3 3 3 3 3 7 7 3 3 5 3 3 3 8 3 4 3 3 3 3 
+1 3 3 3 4 3 7 3 3 3 3 3 4 4 3 3 3 3 3 3 3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3 4 3 
+3 3 3 3 3 3 3 3 3 8 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 ) \ ? SETUP 
+"UNITS-SET" "SI-CBAR" ? \ DESCRIPTION DESCRIPTION = "" \ \ MMLOCAL \ \ 
+UNITSET BASESET = SI ( 1 1 1 1 1 1 1 1 1 3 3 7 1 1 1 1 1 1 1 5 1 4 1 1 1 1 1 
+1 1 1 4 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 4 5 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ) \ ? SETUP 
+"ACCOUNT-INFO" ? \ ACCOUNT ACCOUNT = 01 PROJECT-NAME = "PUMP-EXAMPLE1" 
+USER-NAME = "WU" \ ? SETUP "RUN-CONTROL" ? ? SETUP DESCRIPTION ? \ DESCRIP 
+DESCRIP = ( "General Simulation with Metric Units :" 
+"C, bar, kg/hr, kmol/hr, MMKcal/hr, cum/hr." " " "Property Method: None" " " 
+"Flow basis for input: Mole" " " "Stream report composition: Mole flow" ) \ ? 
+DATABANKS ? \ DATABANKS \ ? COMPONENTS MAIN ? \ COMPONENTS CID = WATER ANAME
+ = H2O OUTNAME = WATER TYPE = CONV DBNAME1 = "WATER" ANAME1 = "H2O" \ ? 
+COMPONENTS "COMP-LIST" GLOBAL ? ? SOLVE ? \ "RUN-MODE" MODE = SIM \ ? 
+"DYN-OPTIONS" ? ? FLOWSHEET GLOBAL ? \ BLOCK BLKID = "PIPE-1" BLKTYPE = PIPE 
+MDLTYPE = "Pipe" IN = ( INPUT M0-1 ) OUT = ( OUTPUT M0-1 ) \ \ "DEF-STREAM" 
+SCLASS = CONVEN \ ? PROPERTIES MAIN ? \ GPROPERTIES GBASEOPSET = IDEAL 
+GOPSETNAME = IDEAL PARCON = -1 \ ? PROPERTIES "OPTION-SETS" IDEAL ? \ PARAM 
+BASE = IDEAL \ ? PROPERTIES "MOLEC-STRUCT" WATER ? ? PROPERTIES PARAMETERS 
+BINARY SCALAR "MLQKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = MLQKIJ 
+SETNO = 1 UNITROW = 0 \ ? PROPERTIES PARAMETERS BINARY SCALAR "RKTKIJ-1" ? ; 
+"ENG_MOLE" ; \ PROP-LIST PARAMNAME = RKTKIJ SETNO = 1 UNITROW = 0 \ ? 
+PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "ANDKIJ-1" ? ; "ENG_MOLE" ; \ 
+PROP-LIST PARAMNAME = ANDKIJ SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL
+ = F NEL = 2 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "ANDMIJ-1" ? ; 
+"ENG_MOLE" ; \ PROP-LIST PARAMNAME = ANDMIJ SETNO = 1 UNITROW = 0 TUNITROW = 
+22 TUNITLABEL = F NEL = 2 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" 
+"HENRY-1" ? ; "SI-CBAR_MASS" ; \ PROP-LIST PARAMNAME = HENRY SETNO = 1 
+UNITROW = 20 UNITLABEL = bar TUNITROW = 22 TUNITLABEL = C BDBANK = ( 
+"APV84 BINARY" "APV84 HENRY-AP" ) NEL = 7 \ ? PROPERTIES PARAMETERS BINARY 
+"T-DEPENDENT" "MUKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = MUKIJ SETNO
+ = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = F NEL = 6 \ ? PROPERTIES 
+PARAMETERS BINARY "T-DEPENDENT" "MULIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST 
+PARAMNAME = MULIJ SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = F NEL = 11 
+\ ? "PROP-SET" MAIN HXDESIGN ? ; "SI-CBAR_MOLE" ; \ P1 ID = MASSVFRA \ \ P1 
+ID = MASSFLMX UNITS = ( "kg/sec" ) \ \ P1 ID = HMX UNITS = ( "J/kg" ) \ \ P1 
+ID = RHOMX UNITS = ( "kg/cum" ) \ \ P1 ID = CPMX UNITS = ( "J/kg-K" ) \ \ P1 
+ID = PCMX UNITS = ( "N/sqm" ) \ \ P1 ID = MUMX UNITS = ( "N-sec/sqm" ) \ \ P1 
+ID = KMX UNITS = ( "Watt/m-K" ) \ \ P1 ID = SIGMAMX UNITS = ( "N/m" ) \ \ P1 
+ID = MWMX \ \ P2 PHASE = ( T V L ) SYSPRES = YES \ \ DESCRIPTION DESCRIPTION
+ = "Thermal and transport, for heat exchanger design" \ ? "PROP-SET" MAIN 
+THERMAL ? ; "SI-CBAR_MOLE" ; \ P1 ID = HMX UNITS = ( "cal/gm" ) \ \ P1 ID = 
+CPMX UNITS = ( "cal/gm-K" ) \ \ P1 ID = KMX \ \ P2 SUBSTREAM = MIXED PHASE = 
+( V L ) SYSPRES = YES \ \ DESCRIPTION DESCRIPTION = 
+"Enthalpy, heat capacity, and themral conductivity" \ ? "PROP-SET" MAIN 
+TXPORT ? ; "SI-CBAR_MOLE" ; \ P1 ID = RHOMX UNITS = ( "kg/cum" ) \ \ P1 ID = 
+MUMX \ \ P1 ID = SIGMAMX \ \ P2 SUBSTREAM = MIXED PHASE = ( V L ) SYSPRES = 
+YES \ \ DESCRIPTION DESCRIPTION = "Density, viscosity, and surface tension" \ 
+? "PROP-SET" MAIN VLE ? ; "SI-CBAR_MOLE" ; \ P1 ID = PHIMX \ \ P1 ID = GAMMA 
+\ \ P1 ID = PL \ \ P2 SUBSTREAM = MIXED PHASE = ( V L ) SYSPRES = YES \ \ 
+DESCRIPTION DESCRIPTION = "Fugacity, activity, and vapor pressure" \ ? 
+"PROP-SET" MAIN VLLE ? ; "SI-CBAR_MOLE" ; \ P1 ID = PHIMX \ \ P1 ID = GAMMA \ 
+\ P1 ID = PL \ \ P2 SUBSTREAM = MIXED PHASE = ( V L1 L2 ) SYSPRES = YES \ \ 
+DESCRIPTION DESCRIPTION = "Fugacity, activity, and vapor pressure" \ ? 
+"STREAM-NAMES" ? ? STREAM MATERIAL INPUT ? ; "SI-CBAR_MASS" ; \ SUBSTREAM 
+SSID = MIXED PRES = 7. <20> <5> VFRAC = 1. <0> <0> BASIS = "MASS-FRAC" 
+FLOWBASE = MASS TOTFLOW = 5000. <-80> <3> MIXED-SPEC = PV TOTAL = 1. <-80> 
+<0> JUNK = 1 \ \ MOLE-FLOW SSID1 = MIXED CID = WATER FLOW = 1. <-3> <0> \ ? 
+BLOCK PIPE "PIPE-1" ? ; "SI-CBAR_MASS" ; ; "H-PIPE" ; \ PARAM LENGTH = 20. 
+<17> <1> ELEVATION = 5. <17> <1> IN-DIAM = 100. <17> <7> ROUGHNESS = 0.05 
+<17> <7> OPT-ELEV = ORISE OPT-OUTLET = STREAM \ \ METHODS TYPE = THERMAL 
+TAMB-IN = 20. <22> <4> H-T-COEFF = 20. <16> <1> CHK-FLUX = NO \ \ FITTINGS 
+CONNECTIONS = "FLANGED-WELD" ELBOWS = 2 GATE-VALVES = 1 \ ? "EO-CONV-OPTI" ? 
+\ DMO-PARAMS MODE = DEFAULT \ \ DMO-PARAMS MODE = SIMULATION \ \ DMO-PARAMS 
+MODE = "PARAMETER-ESTIMATION" \ \ DMO-PARAMS MODE = RECONCILIATION \ \ 
+DMO-PARAMS MODE = OPTIMIZATION \ \ LSSQP-PARAMS MODE-L = DEFAULT \ \ 
+LSSQP-PARAMS MODE-L = SIMULATION \ \ LSSQP-PARAMS MODE-L = 
+"PARAMETER-ESTIMATION" \ \ LSSQP-PARAMS MODE-L = RECONCILIATION \ \ 
+LSSQP-PARAMS MODE-L = OPTIMIZATION \ \ NSOLVE-PARAM NSOLVE-MODE = DEFAULT \ \ 
+NSOLVE-PARAM NSOLVE-MODE = SIMULATION \ \ NSOLVE-PARAM NSOLVE-MODE = 
+"PARAMETER-ESTIMATION" \ \ XSLP-PARAMS XSLP-MODE = DEFAULT \ \ XSLP-PARAMS 
+XSLP-MODE = SIMULATION \ \ XSLP-PARAMS XSLP-MODE = "PARAMETER-ESTIMATION" \ \ 
+XSLP-PARAMS XSLP-MODE = RECONCILIATION \ \ XSLP-PARAMS XSLP-MODE = 
+OPTIMIZATION \ ? REPORT "BLOCK-REPORT" ? ? REPORT "STREAM-REPOR" ? \ OPTIONS 
+MOLEFLOW = MOLEFLOW MASSFLOW = MASSFLOW \ 
+
+ GRAPHICS_BACKUP
+PFS V 5.00
+$CONFIG
+paramdata APV84 ENRTL-RK
+paramdata APV84 VLE-IG
+paramdata APV84 VLE-RK
+paramdata APV84 VLE-HOC
+paramdata APV84 LLE-LIT
+paramdata APV84 LLE-ASPEN
+paramdata APV84 VLE-LIT
+paramdata APV84 BINARY
+paramdata APV84 EOS-LIT
+paramdata APV84 HENRY-AP
+paramdata APV84 ASPEN-BM
+purebank APV84 PURE11
+purebank APV84 AQUEOUS
+purebank APV84 SOLIDS
+purebank APV84 INORGANIC
+purebank APV84 COMBUST
+purebank APV84 ASPENPCD
+regdbank 1
+ftn_check 1
+autoblockid 1
+autostreamid 1
+showblockid 1
+showstreamid 1
+autoplacement 1
+grid 2
+gridresolution 0.100000
+scale 0
+blockprefix B
+labelscale 1.000000
+3DOn 1
+qwformat %.0f
+tempformat %.0f
+presformat %.0f
+flowformat %.0f
+strmqwformat %.0f
+vflowformat %.0f
+mflowformat %.0f
+vfracformat %.2f
+pseudobatch 0
+partial 1
+animation 1
+runanyway 0
+tooldrawvisible 0
+browserheight 7530
+browserwidth 10725
+browsertreewidth 2450
+polyplusenabled 1
+dynaplusenabled 1
+bfracenabled 1
+rtfenabled 1
+rspenabled 1
+initializeicarus 0
+pinchenabled 0
+linklimit 5000
+material_color 0
+material_style 0
+material_width 1
+heat_color 0
+heat_style 1
+heat_width 1
+heat_termid Q
+work_color 0
+work_style 2
+work_width 1
+work_termid W
+connections_color 9
+connections_style 3
+connections_width 1
+measurements_color 4
+measurements_style 4
+measurements_width 1
+displayeoconn 0
+displaycalcs 0
+displaytransfers 0
+displaymeas 0
+displaydesignspecs 0
+displaycalccons 0
+displaymeascons 0
+displayothercons 0
+displayeomeas 1
+displayeomeastype 2
+displayothermanipconn 0
+showeoviews 0
+eoautosave 1
+allow_system_userprops 0
+copy_estimation 1
+copy_retrieved 1
+purge_incomp_params 0
+set_default_biparams 0
+set_default_dataset1 0
+set_default_dataset0 1
+bestinput 0
+autosmrun 0
+genallpropset 0
+strmresformdefault 0
+roottype 1
+exchangerfile 1
+streamformat 1
+runsettingfile 1
+usermodelfile 1
+fortranfile 0
+allow_system_autoparam 1
+timeout 1000
+auto_evaluate 0
+customglobaldatapropset1 0 | Custom1 | * | %.2f | 0 | 6
+customglobaldatapropset2 0 | Custom2 | * | %.2f | 1 | 7
+customglobaldatapropset3 0 | Custom3 | * | %.2f | 2 | 8
+customglobaldatapropset4 0 | Custom4 | * | %.2f | 4 | 9
+customglobaldatapropset5 0 | Custom5 | * | %.2f | 5 | 10
+customglobaldatapropset6 0 | Custom6 | * | %.2f | 6 | 11
+economics_active 0
+ignoreEOVarNameFixupsOnImport 1
+#
+$_APWNSHELL_SETTINGS
+<CommonShellSettings xmlns="http://schemas.aspentech.com/xaml/presentation/visualisation/commonshell" xmlns:atapmaa="clr-namespace:AspenTech.AspenPlus.Modules.ApwnApplication;assembly=ApwnShell" xmlns:atapie="clr-namespace:AspenTech.AspenPlus.Infrastructure.Events;assembly=AspenTech.AspenPlus.Infrastructure" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:apmab="clr-namespace:AspenPlus.Modules.ApwnBrowser;assembly=ApwnShell" xmlns:cxv="http://schemas.aspentech.com/xaml/presentation/cxsviewmodel" xmlns:atapi="clr-namespace:AspenTech.AspenPlus.Infrastructure;assembly=AspenTech.AspenPlus.Infrastructure" xmlns:atdi="clr-namespace:AspenTech.Dashboard.Infrastructure;assembly=AspenTech.Dashboard.Infrastructure">
+  <CommonShellSettings.CurrentWorkspace>
+    <ShellWorkspace Layout="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;&#xA;&lt;xamDockManager version=&quot;13.1.20131.2073&quot;&gt;&#xD;&#xA;  &lt;contentPanes&gt;&#xD;&#xA;    &lt;contentPane name=&quot;_AnonymousScreen2&quot; location=&quot;Document&quot; lastActivatedTime=&quot;2019-11-01T06:21:56.8584081Z&quot; /&gt;&#xD;&#xA;    &lt;contentPane name=&quot;FlowsheetScreenFactory&quot; location=&quot;Document&quot; lastActivatedTime=&quot;2019-11-01T06:11:59.8520047Z&quot; /&gt;&#xD;&#xA;    &lt;contentPane name=&quot;ModelLibraryScreenFactoryKey&quot; location=&quot;DockedBottom&quot; lastActivatedTime=&quot;2019-11-01T06:11:57.1724047Z&quot; /&gt;&#xD;&#xA;    &lt;contentPane name=&quot;_AnonymousScreen1&quot; location=&quot;DockedTop&quot; lastActivatedTime=&quot;2019-10-29T03:12:28.0936062Z&quot; /&gt;&#xD;&#xA;  &lt;/contentPanes&gt;&#xD;&#xA;  &lt;panes&gt;&#xD;&#xA;    &lt;splitPane name=&quot;Zca258db3a5534fc587e39f3ae6f8bbe2&quot; splitterOrientation=&quot;Vertical&quot; location=&quot;DockedBottom&quot;&gt;&#xD;&#xA;      &lt;contentPane name=&quot;ModelLibraryScreenFactoryKey&quot; /&gt;&#xD;&#xA;    &lt;/splitPane&gt;&#xD;&#xA;    &lt;splitPane name=&quot;Zd2d2f1b4b02d48d09d5d2ffd19a1e771&quot; splitterOrientation=&quot;Vertical&quot; location=&quot;DockedTop&quot;&gt;&#xD;&#xA;      &lt;contentPane name=&quot;_AnonymousScreen1&quot; /&gt;&#xD;&#xA;    &lt;/splitPane&gt;&#xD;&#xA;  &lt;/panes&gt;&#xD;&#xA;  &lt;documents splitterOrientation=&quot;Vertical&quot;&gt;&#xD;&#xA;    &lt;splitPane name=&quot;Z13b34e303f2f41678f92b9fb5cbeb765&quot; splitterOrientation=&quot;Vertical&quot;&gt;&#xD;&#xA;      &lt;tabGroup name=&quot;Z13db97b7584f4e9986584749b8468f7c&quot; selectedIndex=&quot;1&quot;&gt;&#xD;&#xA;        &lt;contentPane name=&quot;FlowsheetScreenFactory&quot; /&gt;&#xD;&#xA;        &lt;contentPane name=&quot;_AnonymousScreen2&quot; /&gt;&#xD;&#xA;      &lt;/tabGroup&gt;&#xD;&#xA;    &lt;/splitPane&gt;&#xD;&#xA;  &lt;/documents&gt;&#xD;&#xA;&lt;/xamDockManager&gt;" NavigationGroupToSelect="Simulation" IsNavigationPaneMinimized="False" IsRibbonMinimized="False">
+      <ShellWorkspace.Screens>
+        <WorkspaceScreenData PaneName="_AnonymousScreen2" ScreenFactoryKey="ApwnFormContentFactory">
+          <WorkspaceScreenData.ScreenSubject>
+            <atapmaa:ApwnFormScreenSubject Key="Blocks.PIPE-1.Results" NavigationGroupKey="Simulation">
+              <atapmaa:ApwnFormScreenSubject.ShowFormArgs>
+                <atapie:ShowFormEventArgs FormProgId="MMPIPE.MMPIPE_RESULT" FormKey="Blocks.PIPE-1.Results" Header="PIPE-1 (Pipe) - Results" ResultsOnly="True" PathKey="Top.appModelV8.Blocks.PIPE-1">
+                  <atapie:ShowFormEventArgs.Parameters>
+                    <s:String assembly:Key="id">PIPE-1</s:String>
+                    <s:String assembly:Key="main">Top.appModelV8.Blocks.PIPE-1</s:String>
+                  </atapie:ShowFormEventArgs.Parameters>
+                </atapie:ShowFormEventArgs>
+              </atapmaa:ApwnFormScreenSubject.ShowFormArgs>
+              <atapmaa:ApwnFormScreenSubject.PlotwizardRule>
+                <apmab:ApwnPlotwizardRule IsHierarchy="True" ContextPath="Top.appModelV8.Blocks.PIPE-1">
+                  <apmab:ApwnPlotwizardRule.ProgId>
+                    <s:String>WpfPLSOLID.RibbonPlotWizardMgr</s:String>
+                    <s:String>WpfPLPIPE.RibbonPlotWizardMgr</s:String>
+                  </apmab:ApwnPlotwizardRule.ProgId>
+                </apmab:ApwnPlotwizardRule>
+              </atapmaa:ApwnFormScreenSubject.PlotwizardRule>
+            </atapmaa:ApwnFormScreenSubject>
+          </WorkspaceScreenData.ScreenSubject>
+          <WorkspaceScreenData.ScreenState>
+            <atapmaa:ApwnFormScreenState>
+              <atapmaa:ApwnFormScreenState.Parameters>
+                <cxv:CxvParameter Name="main" Value="Top.appModelV8.Blocks.PIPE-1" />
+                <cxv:CxvParameter Name="id" Value="PIPE-1" />
+                <cxv:CxvParameter Name="extraComments_path" Value="Comments" />
+                <cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" />
+                <cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" />
+                <cxv:CxvParameter Name="select" Value="Summary" />
+                <cxv:CxvParameter Name="selected_tab" Value="tab2" />
+              </atapmaa:ApwnFormScreenState.Parameters>
+            </atapmaa:ApwnFormScreenState>
+          </WorkspaceScreenData.ScreenState>
+        </WorkspaceScreenData>
+        <WorkspaceScreenData PaneName="FlowsheetScreenFactory" ScreenFactoryKey="FlowsheetScreenFactory">
+          <WorkspaceScreenData.ScreenSubject>
+            <atapi:StringScreenSubject subject="{assembly:Null}" fatherNodePath="{assembly:Null}" NavigationGroupKey="Simulation" />
+          </WorkspaceScreenData.ScreenSubject>
+          <WorkspaceScreenData.ScreenState>
+            <ScreenState Zoom="0.940001" />
+          </WorkspaceScreenData.ScreenState>
+        </WorkspaceScreenData>
+        <WorkspaceScreenData PaneName="ModelLibraryScreenFactoryKey" ScreenFactoryKey="ModelLibraryScreenFactoryKey">
+          <WorkspaceScreenData.ScreenState>
+            <ScreenState />
+          </WorkspaceScreenData.ScreenState>
+        </WorkspaceScreenData>
+        <WorkspaceScreenData PaneName="_AnonymousScreen1" ScreenFactoryKey="DashboardScreenFactoryKey">
+          <WorkspaceScreenData.ScreenState>
+            <atdi:DashboardScreenState>
+              <atdi:DashboardScreenState.ItemStates>
+                <atdi:DashboardItemState Key="EnergyAnalysisDashboardItem" State="&lt;CDI State=&quot;Inactive&quot; /&gt;" />
+                <atdi:DashboardItemState Key="EconomicsAnalysisDashboardItem" State="&lt;CDI State=&quot;Inactive&quot; /&gt;" />
+                <atdi:DashboardItemState Key="EdrActivationDashboardItem" State="&lt;CDI State=&quot;Inactive&quot; /&gt;" />
+              </atdi:DashboardScreenState.ItemStates>
+            </atdi:DashboardScreenState>
+          </WorkspaceScreenData.ScreenState>
+        </WorkspaceScreenData>
+      </ShellWorkspace.Screens>
+    </ShellWorkspace>
+  </CommonShellSettings.CurrentWorkspace>
+  <CommonShellSettings.SavedWorkspaces>
+    <ShellWorkspaceFolder />
+  </CommonShellSettings.SavedWorkspaces>
+</CommonShellSettings>
+$_END_APWNSHELL_SETTINGS
+#
+PFSVData
+# of PFS Objects = 4
+SIZE -3.08842 1.49964 -0.630604 0.633396
+BLOCK
+ID: PIPE-1
+Version: 1
+ICON: "H-PIPE"
+Flag 0
+Section GLOBAL
+At -1.003113 0.001396
+Label At -0.187903 0.252281
+Scale 1.580000 Modifier 0
+STREAM
+ID: INPUT
+Version: 2
+Flag 0
+GLOBAL 117
+TYPE 0 TERMINAL 1
+At -3.088420 0.004963
+Label At 0.294210 0.000000
+ROUTE 0 0
+$ $ 0.0 0.0
+ROUTE 1 0
+r r -3.088420 0.004963 0
+x x -2.500000 0.004963 0
+y y -2.500000 0.000149 0
+x x -2.070677 0.000149 0
+t l -1.870677 0.000149 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: OUTPUT
+Version: 2
+Flag 0
+GLOBAL 117
+TYPE 0 TERMINAL 2
+At 1.499637 0.001396
+Label At -0.757093 0.000000
+ROUTE 0 0
+r l 1.499637 0.001396 0
+x x -0.014549 0.001396 0
+y 0 -0.014549 0.000149 0
+t r -0.214549 0.000149 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+ROUTE 1 0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+LEGEND
+Version: 2
+Dim: -3.90243 -3.2 -3.22086 -3.34197
+Size: 0.0193055
+Font: 1 0 =Times New Roman
+# of PFS Objects = 0
+VIEWPORT -5.846412 16.046049 2.835793 -2.202948
+LAYOUT
+TableFormat 1
+Pages 1 1 1 1
+PAGESETUP
+PAPERSIZE 
+PAPERSOURCE 
+ORIENTATION -1
+PRINTPAGENO 1 1
+LEFTMARGIN 10mm
+RIGHTMARGIN 10mm
+TOPMARGIN 10mm
+BOTTOMMARGIN 10mm
+VISIBILITY 0.030000
+PFDFLAG 255 255
+PFDMODE 0
+SCALE 0.019306
+
+$_SUMMARY_FILE
+ MMSUMMARY30.0                                                                  
+ IDSET RUNID (PROPERTIES) (114 *5)                                              
+ IDSET IT (PROPERTIES) (117 *6 119 *6 115 *1)                                   
+ LSET RUNID (%RUNID)                                                            
+ LSET IT (%IT)                                                                  
+ IDSET VERS (PROPERTIES) (345 *6 346 *6 347 *6 348 *6 355 *6)                   
+ LSET VERS (%VERS)                                                              
+ DSET RUN-STATUS VERS @VERS ( "30.0" "WINDOWS" "" "Administrator" "210-05" )    
+ IDSET STRNAM (PROPERTIES) (1233 *6)                                            
+ LSET STRNAM (%STRNAM)                                                          
+ IDSET ID_STRPR (PROPERTIES) ( 454 *2 <119> 1236 *2 <125> 1237 *2 <29> 1238 *2  
+ <55> 1239 *2 <55> 1083 *6 1084 *6 )                                            
+ LSET L_STRPR (%ID_STRPR)                                                       
+ IDSET ID_GUID (PROPERTIES) ( 1270 *6 )                                         
+ LSET L_GUID (%ID_GUID)                                                         
+ DSET RUN-STATUS IT @IT ( "NOVEMBER 1, 2019    2:16:05 P.M." "_5918brs.inm" 0)  
+ DSET RUN-STATUS CURRENCY @CURRENCY ( "$" )                                     
+ IDSET ID_NCC (COMPONENTS) (WATER)                                              
+ IDSET ID_NCCNS (COMPONENTS) (WATER)                                            
+ IDSET ALIAS (COMPONENTS) (1 *6)                                                
+ LSET ALIAS ( %ID_NCC & %ALIAS)                                                 
+ DSET RUN-STATUS RUNID @RUNID ("_5918brs")                                      
+ DSET RUN-STATUS RUNID @RUNID ("_5918brs")                                      
+ IDSET STATUS (PROPERTIES) (125 *1 126 *1 127 *1 128 *1 129 *1 130 *1)          
+ LSET STATUS (%STATUS)                                                          
+ IDSET PPSTAT (PROPERTIES) (272 *1)                                             
+ LSET PPSTAT (%PPSTAT)                                                          
+ DSET RUN-STATUS PPSTAT @PPSTAT (2)                                             
+ IDSET IDRXBAL0 (PROPERTIES) ( 73 *2 <11> 74 *2 75 *2 <10> 76 *2 77 *2 <13> 78  
+ *2)                                                                            
+ IDSET ID_RXBAL (PROPERTIES) ( 73 *2 <11> 358 *2 <11> 359 *2 <11> 74 *2 75 *2   
+ <10> 360 *2 <10> 361 *2 <10> 76 *2 362 *2 <10> 363 *2 <10> 364 *2 <10> 365 *2  
+ 366 *2 <11> 367 *2 <11> 368 *2 <11> 369 *2 370 *2 <10> 371 *2 <10> 372 *2 <10> 
+ 373 *2 77 *2 <13> 374 *2 <13> 375 *2 <13> 78 *2 1266 *2 <10> 1267 *2 <10> 1262 
+ *2 <10> 1263 *2 <10> 1264 *2 <10> )                                            
+ IDSET ID_MOLE (PROPERTIES) ( 79 *2 <11> 80 *2)                                 
+ LSET FLWBAL ( %ID_NCCNS & %ID_MOLE %IDRXBAL0)                                  
+ IDSET ID_XY (PROPERTIES) (43 *2 36 *2 39 *2 40 *2)                             
+ IDSET ID_XX (PROPERTIES) (43 *2 37 *2 38 *2 40 *2)                             
+ IDSET ID_XXY (PROPERTIES) (43 *2 37 *2 38 *2 39 *2 41 *2 42 *2)                
+ LSET VLE ( %ID_XY & %ID_NCC)                                                   
+ LSET LLE ( %ID_XX & %ID_NCC)                                                   
+ LSET VLE3 ( %ID_XXY & %ID_NCC)                                                 
+ IDSET ID_KODE (PROPERTIES) (44 *1)                                             
+ IDSET BLKIN (BLKIN) (STREAMID ?)                                               
+ LSET BLKIN (%BLKIN)                                                            
+ IDSET BLKOUT (BLKOUT) (STREAMID ?)                                             
+ LSET BLKOUT (%BLKOUT)                                                          
+ IDSET TYPIN (TYPIN) (STREAMID ?)                                               
+ LSET TYPIN (%TYPIN)                                                            
+ IDSET TYPOUT (TYPOUT) (STREAMID ?)                                             
+ LSET TYPOUT (%TYPOUT)                                                          
+ IDSET PORT_NO (PROPERTIES) (236 *1 237 *1 238 *1)                              
+ IDSET IDS_0 (SUBSTREAM) ($TOTAL)                                               
+ IDSET IDS_1 (SUBSTREAM) (MIXED)                                                
+ IDSET BLKSTAT (PROPERTIES) (120 *1 121 *1)                                     
+ IDSET BLKMSG (PROPERTIES) (122 *6)                                             
+ LSET BLKSTAT (%BLKSTAT)                                                        
+ LSET BLKMSG (%BLKMSG)                                                          
+ IDSET DESC (PROPERTIES) (113 *6)                                               
+ LSET DESC (%DESC)                                                              
+ IDSET IDPH_V (PHASE) (VAPOR)                                                   
+ IDSET IDPH_L (PHASE) (LIQUID)                                                  
+ IDSET IDPH_S (PHASE) (SOLID)                                                   
+ IDSET IDPH_L1 (PHASE) (LIQUID_1)                                               
+ IDSET IDPH_T (PHASE) (TOTAL)                                                   
+ IDSET IDPH_L2 (PHASE) (LIQUID_2)                                               
+ IDSET IDWET (BASIS) (WET)                                                      
+ IDSET IDDRY (BASIS) (DRY)                                                      
+ IDSET SP (PROPERTIES) (118 *6)                                                 
+ LSET SP (%SP)                                                                  
+ IDSET SPSTAT (SPSTAT) (116 *1)                                                 
+ LSET SPSTAT ( %SPSTAT)                                                         
+ IDSET IDERR (PROPERTIES) (131 *1)                                              
+ DSET RUN-STATUS SP @SP ( "NOVEMBER 1, 2019 2:16:05 P.M." )                     
+ IDSET TITLE (PROPERTIES) (113 *6)                                              
+ LSET TITLE (%TITLE)                                                            
+ DSET RUN-STATUS TITLE @TITLE ( "PUMP -- EXAMPLE 1" )                           
+ IDSET ACCOUNT (PROPERTIES) (222 *5 347 *5 355 *6 348 *6)                       
+ LSET ACCOUNT (%ACCOUNT)                                                        
+ DSET RUN-STATUS ACCOUNT @ACCOUNT (01 * "PUMP-EXAMPLE1" "WU" )                  
+ IDSET FOR (PROPERTIES) (737 *1)                                                
+ LSET FOR (%FOR)                                                                
+ IDSET FORSTAT (PROPERTIES) (738 *1)                                            
+ LSET FORSTAT (%FORSTAT)                                                        
+ IDSET MW (PROPERTIES) (269 *2)                                                 
+ LSET MW (%MW & %ID_NCCNS)                                                      
+ DSET MW MW @MW (1.80152800D+01)                                                
+ IDSET VST (PROPERTIES) (270 *2 <43> )                                          
+ LSET VST (%VST & %ID_NCC)                                                      
+ DSET VST VST @VST (1.80500000D-02 <1> )                                        
+ IDSET TB (PROPERTIES) (271 *2 <22> )                                           
+ LSET TB (%TB & %ID_NCC)                                                        
+ DSET TB TB @TB (1.00000000D+02 <4> )                                           
+ IDSET CASN (PROPERTIES) (37100 *6)                                             
+ LSET CASN (%ID_NCC & %CASN)                                                    
+ DSET CASN CASN @CASN ( "7732-18-5" )                                           
+ IDSET PAMB (PROPERTIES) (32 *2)                                                
+ LSET PAMB (%PAMB)                                                              
+ DSET PAMB PAMB @PAMB (1.01325000D+05)                                          
+ IDSET PAMB2 (PROPERTIES) (32 *2 <20> )                                         
+ LSET PAMB2 (%PAMB2)                                                            
+ DSET RUN-STATUS PAMB @PAMB2 (1.01325000D+00 <5> )                              
+ IDSET ISODES (PROPERTIES) (123 *5 124 *5 132 *5)                               
+ IDSET ISTRCV (PROPERTIES) (1251 *2)                                            
+ IDSET ID_WORK (PROPERTIES) (112 *2 <19> 195 *2 <28> )                          
+ LSET L_WORK (%ISODES %ID_WORK)                                                 
+ IDSET ID_HEAT (PROPERTIES) (1 *2 <13> 815 *2 <22> 816 *2 <22> )                
+ LSET L_HEAT (%ISODES %ID_HEAT)                                                 
+ IDSET ID_LTVC (PROPERTIES) (817 *2 <22> )                                      
+ IDSET ID_LQVC (PROPERTIES) (818 *2 <13> )                                      
+ IDSET ID_TPQV (PROPERTIES) (1 *2 <13> 31 *2 <22> 32 *2 <20> 2 *2 3 *2)         
+ IDSET ID_QTP (PROPERTIES) (1 *2 <13> 31 *2 <22> 32 *2 <20> 3 *2)               
+ IDSET TOTAL (PROPERTIES) (524 *2 <10> 525 *2 <10> 526 *2 <10> )                
+ IDSET ENERGY (PROPERTIES) (504 *2 <13> 505 *2 <13> 506 *2 <13> 1 *2 <13> )     
+ IDSET TOTAX (PROPERTIES) (524 *2 <18> 525 *2 <18> 526 *2 <18> )                
+ IDSET ENERGX (PROPERTIES) (504 *2 <5> 505 *2 <5> 506 *2 <5> 1 *2 <5> )         
+ LSET BPSBAL3 ( %TOTAL %ENERGY)                                                 
+ LSET BPBATCH ( %TOTAX %ENERGX)                                                 
+ DSET RUN-STATUS FORSTAT @FORSTAT (2)                                           
+ DSET FLWBAL @FLWBAL (0.D0 <3> 0.D0 0.D0 <3> 0.D0 0.D0 <3> 0.D0 1.82243021D+04  
+ <1> 9.96214055D-04)                                                            
+ DSET ALIAS @ALIAS ( "H2O" )                                                    
+ IDSET ID_1 (NPOINT) (#1)                                                       
+ IDSET ID_2 (PROPERTIES) (339 *6 132 *5 1196 *6 1197 *6 1198 *6)                
+ LSET L_1 (%ID_2 & %ID_1)                                                       
+ DSET COMPONENTS MAIN COMPS @L_1 ("WATER" C "H2O" "H2O" "WATER" )               
+ LSET L_2 (%ID_RXBAL)                                                           
+ DSET BLOCK PIPE PIPE-1 BLKSTAT @BLKSTAT (0 0)                                  
+ DSET BLOCK PIPE PIPE-1 COMPSTAT @L1 (0)                                        
+ DSET BLOCK PIPE PIPE-1 SYNCSTAT @L1 (0)                                        
+ DSET BLOCK PIPE PIPE-1 BLKIN @BLKIN (1 INPUT                                   
+ "ea044adb-ed2b-4a54-8e01-921ffad119d3" "589f06ef-fd25-4425-a97d-9bf0c8e0fa9f"  
+ )                                                                              
+ DSET BLOCK PIPE PIPE-1 TYPIN @TYPIN (1 MATERIAL)                               
+ DSET BLOCK PIPE PIPE-1 BLKOUT @BLKOUT (1 OUTPUT                                
+ "ea044adb-ed2b-4a54-8e01-921ffad119d3" "88c097f3-84d3-4942-954f-86f26d29c884"  
+ )                                                                              
+ DSET BLOCK PIPE PIPE-1 TYPOUT @TYPOUT (1 MATERIAL)                             
+ DSET BLOCK PIPE PIPE-1 RES_Q @L_2 (2.77542175D+02 <3> 2.77542175D+02 <3> 0.D0  
+ <3> 0.D0 5.00000000D+03 <3> 5.00000000D+03 <3> * <3> 0.D0 * <3> * <3> * <3> *  
+ 2.77542175D+02 <3> 2.77542175D+02 <3> 0.D0 <3> 0.D0 5.00000000D+03 <3>         
+ 5.00000000D+03 <3> * <3> 0.D0 -1.82753362D+07 <1> -1.82935605D+07 <1> * <1>    
+ 9.96214055D-04 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> )                  
+ IDSET ID_3 (PROPERTIES) (1023 *1 1027 *1 1024 *2 <25> 1025 *2 <25> 1026 *2     
+ 1031 *2 1032 *2 1028 *2 <25> 1029 *2 <25> 1030 *2 1033 *2 1034 *2 910 *2 <75>  
+ 911 *2 <75> 912 *2 <75> 913 *2 <75> 182 *2 <22> 183 *2 <20> 1021 *2 <22> 1022  
+ *2 <20> 62 *2 <13> 30030 *2 <17> 1199 *2 1200 *2 1201 *2 <26> 1202 *2 <26>     
+ 1203 *2 <26> 1204 *2 <26> 72 *2 <17> 1229 *1 )                                 
+ LSET L_3 (%ID_3 )                                                              
+ DSET BLOCK PIPE PIPE-1 PIP_RES @L_3 ( 11 11 5.10890125D+01 <1> 6.55692398D+01  
+ <1> 1.18046163D+06 1.44072775D-10 1.00000000D+00 5.20866182D+01 <1>            
+ 6.62063240D+01 <1> 1.18355653D+06 2.13117923D-05 9.99978688D-01 1.83256805D-01 
+ <5> 1.67716365D-03 <5> 2.40551614D-03 <5> 1.87339485D-01 <5> 1.65038823D+02 <4>
+ 7.00000000D+00 <5> 1.63946796D+02 <4> 6.81256894D+00 <5> -1.82243021D+04 <1>   
+ 2.34661267D+01 <1> * * * <1> * <1> * <1> * <1> 2.00000000D+01 <1> 0)           
+ IDSET ID_4 (NPOINT) (#11 )                                                     
+ IDSET ID_5 (PROPERTIES) (72 *2 <17> )                                          
+ LSET L_4 (%ID_5 & %ID_4 )                                                      
+ DSET BLOCK PIPE PIPE-1 PIP_LEN @L_4 ( 0.D0 <1> 2.00000000D+00 <1>              
+ 4.00000000D+00 <1> 6.00000000D+00 <1> 8.00000000D+00 <1> 1.00000000D+01 <1>    
+ 1.20000000D+01 <1> 1.40000000D+01 <1> 1.60000000D+01 <1> 1.80000000D+01 <1>    
+ 2.00000000D+01 <1> )                                                           
+ IDSET ID_6 (PROPERTIES) (7001 *2 <22> )                                        
+ LSET L_5 (%ID_6 & %ID_4 )                                                      
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_5 ( 1.65038859D+02 <4> 1.64931529D+02 <4>   
+ 1.64823804D+02 <4> 1.64715667D+02 <4> 1.64607123D+02 <4> 1.64498167D+02 <4>    
+ 1.64388799D+02 <4> 1.64278974D+02 <4> 1.64168702D+02 <4> 1.64057979D+02 <4>    
+ 1.63946794D+02 <4> )                                                           
+ IDSET ID_7 (PROPERTIES) (7002 *2 <20> )                                        
+ LSET L_6 (%ID_7 & %ID_4 )                                                      
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_6 ( 6.99999998D+00 <5> 6.98139947D+00 <5>   
+ 6.96276981D+00 <5> 6.94410885D+00 <5> 6.92541764D+00 <5> 6.90669569D+00 <5>    
+ 6.88794329D+00 <5> 6.86915346D+00 <5> 6.85032806D+00 <5> 6.83146710D+00 <5>    
+ 6.81256891D+00 <5> )                                                           
+ IDSET ID_8 (PROPERTIES) (607 *2 <40> )                                         
+ LSET L_7 (%ID_8 & %ID_4 )                                                      
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_7 ( -1.31582421D+07 <1> -1.31595583D+07 <1> 
+ -1.31608737D+07 <1> -1.31621883D+07 <1> -1.31635020D+07 <1> -1.31648146D+07 <1>
+ -1.31661264D+07 <1> -1.31674372D+07 <1> -1.31687470D+07 <1> -1.31700558D+07 <1>
+ -1.31713636D+07 <1> )                                                          
+ IDSET ID_9 (PROPERTIES) (383 *2 <38> )                                         
+ LSET L_8 (%ID_9 & %ID_4 )                                                      
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_8 ( 3.46138948D+00 <1> 3.45488170D+00 <1>   
+ 3.44834838D+00 <1> 3.44178834D+00 <1> 3.43520199D+00 <1> 3.42858887D+00 <1>    
+ 3.42194916D+00 <1> 3.41527941D+00 <1> 3.40858050D+00 <1> 3.40185235D+00 <1>    
+ 3.39509411D+00 <1> )                                                           
+ IDSET ID_10 (PROPERTIES) (1035 *2 <80> )                                       
+ LSET L_9 (%ID_10 & %ID_4 )                                                     
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_9 ( -9.14700680D+02 <1> -9.14026317D+02 <1> 
+ -9.13349468D+02 <1> -9.12670033D+02 <1> -9.11988041D+02 <1> -9.11303459D+02 <1>
+ -9.10616284D+02 <1> -9.09926243D+02 <1> -9.09233390D+02 <1> -9.08537709D+02 <1>
+ -9.07839122D+02 <1> )                                                          
+ IDSET ID_11 (PROPERTIES) (7003 *2 )                                            
+ LSET L_10 (%ID_11 & %ID_4 )                                                    
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_10 ( 1.00000000D+00 9.99997810D-01          
+ 9.99995632D-01 9.99993468D-01 9.99991316D-01 9.99989178D-01 9.99987053D-01     
+ 9.99984941D-01 9.99982843D-01 9.99980759D-01 9.99978688D-01 )                  
+ IDSET ID_12 (PROPERTIES) (7004 *2 )                                            
+ LSET L_11 (%ID_12 & %ID_4 )                                                    
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_11 ( 1.45720192D-10 2.19041756D-06          
+ 4.36792177D-06 6.53246138D-06 8.68396645D-06 1.08221682D-05 1.29471679D-05     
+ 1.50586282D-05 1.71565912D-05 1.92410185D-05 2.13117955D-05 )                  
+ IDSET ID_13 (PROPERTIES) (1036 *2 )                                            
+ LSET L_12 (%ID_13 & %ID_4 )                                                    
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_12 ( 1.18046073D+06 1.18076331D+06          
+ 1.18106735D+06 1.18137290D+06 1.18167996D+06 1.18198853D+06 1.18229864D+06     
+ 1.18261041D+06 1.18292381D+06 1.18323887D+06 1.18355562D+06 )                  
+ IDSET ID_14 (PROPERTIES) (210 *2 <25> )                                        
+ LSET L_13 (%ID_14 & %ID_4 )                                                    
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_13 ( 5.10889744D+01 <1> 5.11852079D+01 <1>  
+ 5.12821847D+01 <1> 5.13799284D+01 <1> 5.14784396D+01 <1> 5.15777322D+01 <1>    
+ 5.16778100D+01 <1> 5.17787323D+01 <1> 5.18804935D+01 <1> 5.19831022D+01 <1>    
+ 5.20865793D+01 <1> )                                                           
+ IDSET ID_15 (PROPERTIES) (918 *2 <22> )                                        
+ LSET L_14 (%ID_15 & %ID_4 )                                                    
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_14 ( 2.00000034D+01 <4> 2.00000034D+01 <4>  
+ 2.00000034D+01 <4> 2.00000034D+01 <4> 2.00000034D+01 <4> 2.00000034D+01 <4>    
+ 2.00000034D+01 <4> 2.00000034D+01 <4> 2.00000034D+01 <4> 2.00000034D+01 <4>    
+ 2.00000034D+01 <4> )                                                           
+ IDSET ID_16 (PROPERTIES) (922 *2 <25> )                                        
+ LSET L_15 (%ID_16 & %ID_4 )                                                    
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_15 ( 6.55692400D+01 <1> 6.56309655D+01 <1>  
+ 6.56931091D+01 <1> 6.57556847D+01 <1> 6.58186916D+01 <1> 6.58821371D+01 <1>    
+ 6.59460227D+01 <1> 6.60103847D+01 <1> 6.60752183D+01 <1> 6.61405274D+01 <1>    
+ 6.62063241D+01 <1> )                                                           
+ IDSET ID_17 (PROPERTIES) (920 *2 <25> )                                        
+ LSET L_16 (%ID_17 & %ID_4 )                                                    
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_16 ( 7.44469515D-09 <1> 1.12116978D-04 <1>  
+ 2.23996571D-04 <1> 3.35637398D-04 <1> 4.47037043D-04 <1> 5.58182892D-04 <1>    
+ 6.69081282D-04 <1> 7.79716680D-04 <1> 8.90092420D-04 <1> 1.00020783D-03 <1>    
+ 1.11005853D-03 <1> )                                                           
+ IDSET ID_18 (PROPERTIES) (921 *2 <25> )                                        
+ LSET L_17 (%ID_18 & %ID_4 )                                                    
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_17 ( 5.10889744D+01 <1> 5.11850958D+01 <1>  
+ 5.12819607D+01 <1> 5.13795927D+01 <1> 5.14779926D+01 <1> 5.15771740D+01 <1>    
+ 5.16771410D+01 <1> 5.17779525D+01 <1> 5.18796034D+01 <1> 5.19821020D+01 <1>    
+ 5.20854692D+01 <1> )                                                           
+ IDSET ID_19 (PROPERTIES) (906 *2 <10> )                                        
+ LSET L_18 (%ID_19 & %ID_4 )                                                    
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_18 ( 1.77925495D-04 <3> 2.67995738D+00 <3>  
+ 5.35504750D+00 <3> 8.02523916D+00 <3> 1.06904762D+01 <3> 1.33504588D+01 <3>    
+ 1.60053400D+01 <3> 1.86547510D+01 <3> 2.12987731D+01 <3> 2.39373922D+01 <3>    
+ 2.65705055D+01 <3> )                                                           
+ IDSET ID_20 (PROPERTIES) (904 *2 <10> )                                        
+ LSET L_19 (%ID_20 & %ID_4 )                                                    
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_19 ( 4.99999982D+03 <3> 4.99732004D+03 <3>  
+ 4.99464495D+03 <3> 4.99197476D+03 <3> 4.98930952D+03 <3> 4.98664954D+03 <3>    
+ 4.98399466D+03 <3> 4.98134525D+03 <3> 4.97870123D+03 <3> 4.97606261D+03 <3>    
+ 4.97342949D+03 <3> )                                                           
+ IDSET ID_21 (PROPERTIES) (2021 *2 )                                            
+ LSET L_20 (%ID_21 & %ID_4 )                                                    
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_20 ( 1.00000000D+00 1.00000000D+00          
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 )                  
+ IDSET ID_22 (PROPERTIES) (2022 *2 )                                            
+ LSET L_21 (%ID_22 & %ID_4 )                                                    
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_21 ( 0.D0 0.D0 0.D0 0.D0 0.D0 0.D0 0.D0     
+ 0.D0 0.D0 0.D0 0.D0 )                                                          
+ IDSET ID_23 (PROPERTIES) (541 *2 )                                             
+ LSET L_22 (%ID_23 & %ID_4 )                                                    
+ DSET BLOCK PIPE PIPE-1 PIP_PROF @L_22 ( 1.71276270D-02 1.71275209D-02          
+ 1.71274145D-02 1.71273075D-02 1.71272001D-02 1.71270922D-02 1.71269838D-02     
+ 1.71268749D-02 1.71267655D-02 1.71266556D-02 1.71265451D-02 )                  
+ IDSET ID_24 (PROPERTIES) (88 *2 <39> 61 *2 <39> 89 *2 <39> 90 *2 <39> 991 *2   
+ <7> 992 *2 <7> 993 *2 <7> 994 *2 <7> 926 *2 <37> 925 *2 <37> 995 *2 <37> 996   
+ *2 <37> 928 *2 927 *2 997 *2 998 *2 2 *2 3 *2 31 *2 <22> )                     
+ IDSET ID_25 (PROPERTIES) (39 *2 36 *2 37 *2 38 *2 )                            
+ IDSET ID_26 (NPOINT) ( #11)                                                    
+ IDSET ID_27 (PROPERTIES) (2042 *2 <40> 2041 *2 <38> 2043 *2 2044 *2 2045 *2 )  
+ IDSET ID_28 (PROPERTIES) (2040 *2 )                                            
+ LSET L_23 ( ( %ID_24 %ID_27 %ID_NCCNS & ( %ID_25 %ID_28 ) ) & %ID_26)          
+ DSET BLOCK PIPE PIPE-1 R2_DPLS @L_23 ( -2.37049414D+08 <1> -2.74357006D+08 <1> 
+ -2.74357006D+08 <1> * <1> -4.73347807D+04 <1> -1.32475221D+05 <1>              
+ -1.32475221D+05 <1> * <1> 1.92136311D-01 <1> 4.69199898D+01 <1> 4.69199898D+01 
+ <1> * <1> 1.80152800D+01 1.80152800D+01 1.80152800D+01 * 9.99999964D-01        
+ 1.00000000D+00 1.65038861D+02 <4> -1.31582421D+07 <1> 3.46138957D+00 <1>       
+ 1.80152800D+01 9.99999964D-01 3.55850991D-08 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 -2.37053127D+08 <1>               
+ -2.74367325D+08 <1> -2.74367325D+08 <1> * <1> -4.73211333D+04 <1>              
+ -1.32497511D+05 <1> -1.32497511D+05 <1> * <1> 1.91672712D-01 <1>               
+ 4.69270385D+01 <1> 4.69270385D+01 <1> * <1> 1.80152800D+01 1.80152800D+01      
+ 1.80152800D+01 * 9.99464009D-01 1.00000000D+00 1.64931532D+02 <4>              
+ -1.31595583D+07 <1> 3.45488180D+00 <1> 1.80152800D+01 9.99464009D-01           
+ 5.35991476D-04 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 -2.37056854D+08 <1> -2.74377678D+08 <1> -2.74377678D+08 <1> *   
+ <1> -4.73074252D+04 <1> -1.32519882D+05 <1> -1.32519882D+05 <1> * <1>          
+ 1.91208258D-01 <1> 4.69341116D+01 <1> 4.69341116D+01 <1> * <1> 1.80152800D+01  
+ 1.80152800D+01 1.80152800D+01 * 9.98928990D-01 1.00000000D+00 1.64823806D+02   
+ <4> -1.31608737D+07 <1> 3.44834847D+00 <1> 1.80152800D+01 9.98928990D-01       
+ 1.07100950D-03 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 -2.37060595D+08 <1> -2.74388067D+08 <1> -2.74388067D+08 <1> *   
+ <1> -4.72936544D+04 <1> -1.32542340D+05 <1> -1.32542340D+05 <1> * <1>          
+ 1.90742894D-01 <1> 4.69412102D+01 <1> 4.69412102D+01 <1> * <1> 1.80152800D+01  
+ 1.80152800D+01 1.80152800D+01 * 9.98394952D-01 1.00000000D+00 1.64715669D+02   
+ <4> -1.31621883D+07 <1> 3.44178843D+00 <1> 1.80152800D+01 9.98394952D-01       
+ 1.60504783D-03 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 -2.37064350D+08 <1> -2.74398492D+08 <1> -2.74398492D+08 <1> *   
+ <1> -4.72798213D+04 <1> -1.32564881D+05 <1> -1.32564881D+05 <1> * <1>          
+ 1.90276646D-01 <1> 4.69483340D+01 <1> 4.69483340D+01 <1> * <1> 1.80152800D+01  
+ 1.80152800D+01 1.80152800D+01 * 9.97861905D-01 1.00000000D+00 1.64607125D+02   
+ <4> -1.31635020D+07 <1> 3.43520208D+00 <1> 1.80152800D+01 9.97861905D-01       
+ 2.13809525D-03 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 -2.37068119D+08 <1> -2.74408954D+08 <1> -2.74408954D+08 <1> *   
+ <1> -4.72659251D+04 <1> -1.32587509D+05 <1> -1.32587509D+05 <1> * <1>          
+ 1.89809502D-01 <1> 4.69554832D+01 <1> 4.69554832D+01 <1> * <1> 1.80152800D+01  
+ 1.80152800D+01 1.80152800D+01 * 9.97329908D-01 1.00000000D+00 1.64498170D+02   
+ <4> -1.31648146D+07 <1> 3.42858896D+00 <1> 1.80152800D+01 9.97329908D-01       
+ 2.67009177D-03 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 -2.37071902D+08 <1> -2.74419451D+08 <1> -2.74419451D+08 <1> *   
+ <1> -4.72519655D+04 <1> -1.32610222D+05 <1> -1.32610222D+05 <1> * <1>          
+ 1.89341466D-01 <1> 4.69626580D+01 <1> 4.69626580D+01 <1> * <1> 1.80152800D+01  
+ 1.80152800D+01 1.80152800D+01 * 9.96798932D-01 1.00000000D+00 1.64388801D+02   
+ <4> -1.31661264D+07 <1> 3.42194925D+00 <1> 1.80152800D+01 9.96798932D-01       
+ 3.20106800D-03 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 -2.37075701D+08 <1> -2.74429989D+08 <1> -2.74429989D+08 <1> *   
+ <1> -4.72379370D+04 <1> -1.32633030D+05 <1> -1.32633030D+05 <1> * <1>          
+ 1.88872363D-01 <1> 4.69698610D+01 <1> 4.69698610D+01 <1> * <1> 1.80152800D+01  
+ 1.80152800D+01 1.80152800D+01 * 9.96269050D-01 1.00000000D+00 1.64278976D+02   
+ <4> -1.31674372D+07 <1> 3.41527950D+00 <1> 1.80152800D+01 9.96269050D-01       
+ 3.73095020D-03 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 -2.37079515D+08 <1> -2.74440566D+08 <1> -2.74440566D+08 <1> *   
+ <1> -4.72238403D+04 <1> -1.32655931D+05 <1> -1.32655931D+05 <1> * <1>          
+ 1.88402240D-01 <1> 4.69770919D+01 <1> 4.69770919D+01 <1> * <1> 1.80152800D+01  
+ 1.80152800D+01 1.80152800D+01 * 9.95740245D-01 1.00000000D+00 1.64168704D+02   
+ <4> -1.31687470D+07 <1> 3.40858059D+00 <1> 1.80152800D+01 9.95740245D-01       
+ 4.25975461D-03 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 -2.37083344D+08 <1> -2.74451183D+08 <1> -2.74451183D+08 <1> *   
+ <1> -4.72096752D+04 <1> -1.32678926D+05 <1> -1.32678926D+05 <1> * <1>          
+ 1.87931095D-01 <1> 4.69843506D+01 <1> 4.69843506D+01 <1> * <1> 1.80152800D+01  
+ 1.80152800D+01 1.80152800D+01 * 9.95212522D-01 1.00000000D+00 1.64057981D+02   
+ <4> -1.31700558D+07 <1> 3.40185244D+00 <1> 1.80152800D+01 9.95212522D-01       
+ 4.78747843D-03 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 -2.37087190D+08 <1> -2.74461841D+08 <1> -2.74461841D+08 <1> *   
+ <1> -4.71954398D+04 <1> -1.32702016D+05 <1> -1.32702016D+05 <1> * <1>          
+ 1.87458885D-01 <1> 4.69916380D+01 <1> 4.69916380D+01 <1> * <1> 1.80152800D+01  
+ 1.80152800D+01 1.80152800D+01 * 9.94685899D-01 1.00000000D+00 1.63946796D+02   
+ <4> -1.31713636D+07 <1> 3.39509420D+00 <1> 1.80152800D+01 9.94685899D-01       
+ 5.31410111D-03 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 )                                                               
+ IDSET ID_29 (PROPERTIES) (7001 *2 <22> 7002 *2 <20> 8103 *2 <10> 204 *2 <12>   
+ 8101 *2 <11> 7003 *2 )                                                         
+ LSET L_24 ( %ID_29 )                                                           
+ IDSET ID_30 (PROPERTIES) (253 *2)                                              
+ IDSET ID_31 (PROPERTIES) (253 *2 <11> )                                        
+ IDSET ID_32 (PROPERTIES) (253 *2 <12> )                                        
+ IDSET ID_33 (PROPERTIES) (253 *2 <17> )                                        
+ IDSET ID_34 (PROPERTIES) (253 *2 <27> )                                        
+ IDSET ID_35 (PROPERTIES) (253 *2 <59> )                                        
+ IDSET ID_36 (PROPERTIES) (253 *2 <10> )                                        
+ IDSET ID_37 (PROPERTIES) (8101 *2 <11> 8103 *2 <10> )                          
+ IDSET ID_38 (PROPERTIES) (8001 *2 <11> 8003 *2 <10> 8010 *2 <12> 7001 *2 <22>  
+ 7002 *2 <20> 7003 *2 7004 *2 7006 *2 2002 *2 <39> 2002 *2 <40> 2002 *2 <13>    
+ 2003 *2 <41> 2003 *2 <42> 11006 *2 <37> 11006 *2 <38> 11007 *2 8005 *2 <12> )  
+ LSET L_25 ( %ISODES (( %ID_NCCNS & %ID_37 %ID_38) & %IDS_1) )                  
+ DSET STREAM MATERIAL INPUT BLKSTAT @BLKSTAT (0 0)                              
+ DSET STREAM MATERIAL INPUT COMPSTAT @L1 (0)                                    
+ DSET STREAM MATERIAL INPUT STR_MAIN @L_25 (* PIPE-1 VAPOR 2.77542175D+02 <3>   
+ 5.00000000D+03 <3> 2.77542175D+02 <3> 5.00000000D+03 <3> 1.44450650D+03 <7>    
+ 1.65038823D+02 <4> 7.00000000D+00 <5> 1.00000000D+00 0.D0 0.D0 -2.37049415D+08 
+ <1> -1.31582421D+07 <1> -1.82753362D+07 <1> -4.73347837D+04 <1>                
+ -2.62747977D+03 <1> 1.92136328D-01 <1> 3.46138975D+00 <1> 1.80152800D+01       
+ 5.00963626D+00 <7> )                                                           
+ DSET STREAM MATERIAL INPUT RES_STR @L_24 (1.65038823D+02 <4> 7.00000000D+00 <5>
+ 5.00000000D+03 <3> 1.44450650D+03 <7> 2.77542175D+02 <3> 1.00000000D+00 )      
+ DSET STREAM MATERIAL OUTPUT BLKSTAT @BLKSTAT (0 0)                             
+ DSET STREAM MATERIAL OUTPUT COMPSTAT @L1 (0)                                   
+ DSET STREAM MATERIAL OUTPUT STR_MAIN @L_25 (PIPE-1 * MIXED 2.77542175D+02 <3>  
+ 5.00000000D+03 <3> 2.77542175D+02 <3> 5.00000000D+03 <3> 1.47271319D+03 <7>    
+ 1.63946796D+02 <4> 6.81256894D+00 <5> 9.94685900D-01 5.31410016D-03 0.D0       
+ -2.37285803D+08 <1> -1.31713636D+07 <1> -1.82935605D+07 <1> -4.76498304D+04 <1>
+ -2.64496751D+03 <1> 1.88456366D-01 <1> 3.39509420D+00 <1> 1.80152800D+01       
+ 5.00963626D+00 <7> )                                                           
+ DSET STREAM MATERIAL OUTPUT RES_STR @L_24 (1.63946796D+02 <4> 6.81256894D+00   
+ <5> 5.00000000D+03 <3> 1.47271319D+03 <7> 2.77542175D+02 <3> 9.94685900D-01 )  
+ IDSET ID_39 (PROPERTIES) (757 *1)                                              
+ IDSET ID_40 (PROPERTIES) (36 *2 37 *2 38 *2 39 *2 8103 *2 <10> )               
+ LSET L_26 ( %ID_NCCNS & %ID_40 %ID_39)                                         
+ DSET STREAM MATERIAL INPUT STRM_XY @L_26 ( 1.00000000D+00 1.00000000D+00       
+ 1.00000000D+00 1.00000000D+00 5.00000000D+03 <3> 0 )                           
+ DSET STREAM MATERIAL OUTPUT STRM_XY @L_26 ( 1.00000000D+00 1.00000000D+00      
+ 1.00000000D+00 1.00000000D+00 5.00000000D+03 <3> * )                           
+ IDSET ID_41 (PROPERTIES) (64 *2 <11> 63 *2 <11> 94 *2 <11> 95 *2 <11> 88 *2    
+ <39> 61 *2 <39> 89 *2 <39> 90 *2 <39> 991 *2 <7> 992 *2 <7> 993 *2 <7> 994 *2  
+ <7> 926 *2 <37> 925 *2 <37> 995 *2 <37> 996 *2 <37> 928 *2 927 *2 997 *2 998   
+ *2 2 *2 3 *2 606 *2 <11> 103 *2 <12> 269 *2 1246 *2 <10> 1247 *2 <10> 1248 *2  
+ <12> 1249 *2 <12> 8010 *2 <12> 7007 *2 7008 *2 )                               
+ LSET L_27 ( %ID_41)                                                            
+ DSET STREAM MATERIAL INPUT STR_PHAS @L_27 ( 2.77542175D+02 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> -2.37049415D+08 <1> * <1> * <1> * <1> -4.73347837D+04 <1> * <1> * 
+ <1> * <1> 1.92136328D-01 <1> * <1> * <1> * <1> 1.80152800D+01 * * *            
+ 1.00000000D+00 1.00000000D+00 2.77542175D+02 <3> 5.00963626D+00 <7>            
+ 1.80152800D+01 5.00000000D+03 <3> 0.D0 <3> 1.44450650D+03 <7> * <7>            
+ 1.44450650D+03 <7> 1.00000000D+00 0.D0 )                                       
+ DSET STREAM MATERIAL OUTPUT STR_PHAS @L_27 ( 2.76067288D+02 <3> 1.47488692D+00 
+ <3> 1.47488692D+00 <3> 0.D0 <3> -2.37087190D+08 <1> -2.74461841D+08 <1>        
+ -2.74461841D+08 <1> * <1> -4.71954399D+04 <1> -1.32702016D+05 <1>              
+ -1.32702016D+05 <1> * <1> 1.87458885D-01 <1> 4.69916381D+01 <1> 4.69916381D+01 
+ <1> * <1> 1.80152800D+01 1.80152800D+01 1.80152800D+01 * 9.94685900D-01        
+ 1.00000000D+00 2.77542175D+02 <3> 5.00963626D+00 <7> 1.80152800D+01            
+ 4.97342950D+03 <3> 2.65705008D+01 <3> 1.47268180D+03 <7> 3.13861567D-02 <7>    
+ 1.47271319D+03 <7> 9.94685900D-01 0.D0 )                                       
+ IDSET ID_42 (PROPERTIES) (8103 *2 <10> 1265 *2 <10> )                          
+ IDSET ID_43 (HIER-ID) ( PLANT )                                                
+ IDSET ID_44 (STREAM-ID) ( INPUT )                                              
+ LSET L_28 ( %ID_43 & %ID_42 & %ID_44)                                          
+ DSET UTIL-SUMMARY FEEDSUM @L_28 ( 5.00000000D+03 <3> 0.D0 <3> )                
+ IDSET ID_45 (HIER-ID) ( PLANT )                                                
+ IDSET ID_46 (STREAM-ID) ( OUTPUT )                                             
+ LSET L_29 ( %ID_45 & %ID_42 & %ID_46)                                          
+ DSET UTIL-SUMMARY PRODSUM @L_29 ( 5.00000000D+03 <3> 0.D0 <3> )                
+ IDSET ID_47 (PROPERTIES) ( 1266 *2 <10> 1267 *2 <10> 1262 *2 <10> 1263 *2 <10> 
+ 1264 *2 <10> 1268 *2 <119> )                                                   
+ LSET L_30 ( %ID_47)                                                            
+ DSET UTIL-SUMMARY PLANTSUM @L_30 ( 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>
+ 0.D0 <1> )                                                                     
+ IDSET ID_48 (HIER-ID) ( PLANT )                                                
+ LSET L_31 ( %ID_48 & %ID_47)                                                   
+ DSET UTIL-SUMMARY HIERSUM @L_31 ( 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 
+ 0.D0 <1> )                                                                     
+ IDSET RSTAT (PROPERTIES) (739 *1)                                              
+ LSET RSTAT ( %RSTAT)                                                           
+ DSET RUN-STATUS RPTSTAT @RSTAT (0)                                             
+ DSET RUN-STATUS OLDSTAT @STATUS ( 0 2 2 2 0 0 )                                
+ DSET RUN-STATUS STATUS @STATUS ( 8 * * * * * )                                 
+ DSET RUN-STATUS COMPSTAT @L_1 (0)                                              
+ IDSET TSTAT (PROPERTIES) (741 *1)                                              
+ LSET TSTAT ( %TSTAT)                                                           
+ DSET RUN-STATUS TOTSTAT @TSTAT (0)                                             
+ DSET SPSTAT @SPSTAT (0)                                                        

@@ -1,0 +1,938 @@
+MM "5.1" FLAVOR "NO" VERSION "10.1-0" DATETIME "Mon Apr 04 09:45:00 2005" 
+MACHINE "WIN-NT/VC"  ; 
+startlibrary
+version1
+NumLibs = 1
+Built-In
+NumCats = 9
+Mixers/Splitters
+active
+Separators
+active
+Heat Exchangers
+active
+Columns
+active
+Reactors
+active
+Pressure Changers
+active
+Manipulators
+active
+Solids
+active
+User Models
+active
+endlibrary
+; 
+1
+>VERSION 0
+ABSORBER
+RadFrac
+Built-In
+RADFRAC
+? SETUP MAIN ? \ TITLE TITLE = "Absorption" \ \ SIMULATE INTERACTIVE = NO 
+MOLEFLOW = MOLEFLOW MASSFLOW = MASSFLOW MOLEFRAC = MOLEFRAC MASSFRAC = 
+MASSFRAC TFFFILE = "CHEM_M" VISITED = 1 \ ? SETUP GLOBAL ? \ "IN-UNITS" INSET
+ = "SI-CBAR" \ \ "STREAM-CLASS" SCLASS = CONVEN \ ? SETUP DIAGNOSTICS ? ? 
+SETUP "SIM-OPTIONS" ? ; "METCBAR_MOLE" ; ? SETUP "UNITS-SET" METCBAR ? \ 
+DESCRIPTION DESCRIPTION = "Metric Units with C, BAR, MMKCAL/HR, and CUM" \ \ 
+MMLOCAL \ \ UNITSET BASESET = MET ( 3 3 3 3 3 3 3 3 3 3 3 7 7 3 3 5 3 3 3 5 3 
+4 3 3 3 3 1 3 3 3 4 3 7 3 3 3 1 1 4 4 3 3 3 3 3 3 3 3 3 3 3 3 5 3 3 3 3 3 3 3 
+3 3 3 4 3 3 3 3 3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 ) \ ? SETUP "UNITS-SET" METCKGCM ? \ 
+DESCRIPTION DESCRIPTION = "Metric Units with C, KG/SQCM, MMKCAL/HR, and CUM" 
+\ \ MMLOCAL \ \ UNITSET BASESET = MET ( 3 3 3 3 3 3 3 3 3 3 3 7 7 3 3 5 3 3 3 
+8 3 4 3 3 3 3 1 3 3 3 4 3 7 3 3 3 3 3 4 4 3 3 3 3 3 3 3 3 3 3 3 3 5 3 3 3 3 3 
+3 3 3 3 3 4 3 3 3 3 3 3 3 3 3 3 8 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 ) \ ? SETUP "UNITS-SET" "SI-CBAR" ? \ 
+DESCRIPTION DESCRIPTION = "International System Units with C, BAR, and /HR" \ 
+\ MMLOCAL \ \ UNITSET BASESET = SI ( 1 1 1 1 1 1 1 1 1 3 3 7 1 1 1 1 1 1 1 5 
+1 4 1 1 1 1 1 1 1 1 4 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 5 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ) \ ? SETUP "ACCOUNT-INFO" ? ? SETUP 
+"RUN-CONTROL" ? ? SETUP DESCRIPTION ? \ DESCRIP DESCRIP = ( 
+"General Simulation with Metric Units :" 
+"C, bar, kg/hr, kmol/hr, MMKcal/hr, cum/hr." " " "Property Method: None" " " 
+"Flow basis for input: Mole" " " "Stream report composition: Mole flow" ) \ ? 
+DATABANKS ? \ DATABANKS FILE-SYM-NAM = ( PURE10 AQUEOUS SOLIDS INORGANIC ) \ 
+? COMPONENTS MAIN ? \ COMPONENTS CID = N2 ANAME = N2 OUTNAME = N2 TYPE = CONV 
+DBNAME1 = "NITROGEN" ANAME1 = "N2" /  CID = H2 ANAME = H2 OUTNAME = H2 TYPE
+ = CONV DBNAME1 = "HYDROGEN" ANAME1 = "H2" /  CID = CO2 ANAME = CO2 OUTNAME
+ = CO2 TYPE = CONV DBNAME1 = "CARBON-DIOXIDE" ANAME1 = "CO2" /  CID = 
+METHANOL ANAME = CH4O OUTNAME = METHANOL TYPE = CONV DBNAME1 = "METHANOL" 
+ANAME1 = "CH4O" \ ? COMPONENTS "HENRY-COMPS" "HC-1" ? \ "HENRY-COMPS" CID = ( 
+N2 H2 CO2 ) \ ? FLOWSHEET GLOBAL ? \ BLOCK BLKID = ABSORBER BLKTYPE = RADFRAC 
+IN = ( "G-IN" M0-1 "L-IN" M0-1 ) OUT = ( "G-OUT" M0-1 "L-OUT" M2-3 ) \ \ 
+"DEF-STREAM" SCLASS = CONVEN \ ? PROPERTIES MAIN ? \ GPROPERTIES GBASEOPSET
+ = "NRTL-RK" GOPSETNAME = "NRTL-RK" PARCON = -2 \ ? PROPERTIES "OPTION-SETS" 
+NRTL ? \ PARAM BASE = NRTL \ ? PROPERTIES "OPTION-SETS" "NRTL-RK" ? \ PARAM 
+BASE = "NRTL-RK" \ ? PROPERTIES "MOLEC-STRUCT" CO2 ? ? PROPERTIES 
+"MOLEC-STRUCT" H2 ? ? PROPERTIES "MOLEC-STRUCT" METHANOL ? ? PROPERTIES 
+"MOLEC-STRUCT" N2 ? ? PROPERTIES PARAMETERS BINARY SCALAR "RKTKIJ-1" ? ; 
+"ENG_MOLE" ; \ PROP-LIST PARAMNAME = RKTKIJ SETNO = 1 UNITROW = 0 \ ? 
+PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "ANDKIJ-1" ? ; "ENG_MOLE" ; \ 
+PROP-LIST PARAMNAME = ANDKIJ SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL
+ = F NEL = 2 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "ANDMIJ-1" ? ; 
+"ENG_MOLE" ; \ PROP-LIST PARAMNAME = ANDMIJ SETNO = 1 UNITROW = 0 TUNITROW = 
+22 TUNITLABEL = F NEL = 2 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" 
+"HENRY-1" ? ; "SI-CBAR_MOLE" ; \ PROP-LIST PARAMNAME = HENRY SETNO = 1 
+UNITROW = 20 UNITLABEL = bar TUNITROW = 22 TUNITLABEL = C BDBANK = ( BINARY 
+HENRY ) NEL = 6 \ \ BPVAL PARAMNAME2 = HENRY CID1 = N2 CID2 = METHANOL 
+UNITROW2 = 20 UNITLABEL2 = bar TUNITROW2 = 22 TUNITLABEL2 = C /  PARAMNAME2
+ = HENRY CID1 = H2 CID2 = METHANOL UNITROW2 = 20 UNITLABEL2 = bar TUNITROW2
+ = 22 TUNITLABEL2 = C /  PARAMNAME2 = HENRY CID1 = CO2 CID2 = METHANOL 
+UNITROW2 = 20 UNITLABEL2 = bar TUNITROW2 = 22 TUNITLABEL2 = C \ ? PROPERTIES 
+PARAMETERS BINARY "T-DEPENDENT" "NRTL-1" ? ; "SI-CBAR_MOLE" ; \ PROP-LIST 
+PARAMNAME = NRTL SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = C BDBANK = 
+( "VLE-IG" "LLE-ASPEN" "VLE-LIT" ) NEL = 12 \ ? "PROP-SET" MAIN HXDESIGN ? ; 
+"SI_MOLE" ; \ P1 ID = MASSVFRA \ \ P1 ID = MASSFLMX UNITS = ( "kg/sec" ) \ \ 
+P1 ID = HMX UNITS = ( "J/kg" ) \ \ P1 ID = RHOMX UNITS = ( "kg/cum" ) \ \ P1 
+ID = CPMX UNITS = ( "J/kg-K" ) \ \ P1 ID = PCMX UNITS = ( "N/sqm" ) \ \ P1 ID
+ = MUMX UNITS = ( "N-sec/sqm" ) \ \ P1 ID = KMX UNITS = ( "Watt/m-K" ) \ \ P1 
+ID = SIGMAMX UNITS = ( "N/m" ) \ \ P1 ID = MWMX \ \ P2 PHASE = ( T V L ) \ \ 
+DESCRIPTION DESCRIPTION = "Thermal and transport, for heat exchanger design" 
+\ ? "PROP-SET" MAIN THERMAL ? ; "METCBAR_MOLE" ; \ P1 ID = HMX UNITS = ( 
+"cal/gm" ) \ \ P1 ID = CPMX UNITS = ( "cal/gm-K" ) \ \ P1 ID = KMX \ \ P2 
+SUBSTREAM = MIXED PHASE = ( V L ) \ \ DESCRIPTION DESCRIPTION = 
+"Enthalpy, heat capacity, and themral conductivity" \ ? "PROP-SET" MAIN 
+TXPORT ? ; "METCBAR_MOLE" ; \ P1 ID = RHOMX UNITS = ( "kg/cum" ) \ \ P1 ID = 
+MUMX \ \ P1 ID = SIGMAMX \ \ P2 SUBSTREAM = MIXED PHASE = ( V L ) \ \ 
+DESCRIPTION DESCRIPTION = "Density, viscosity, and surface tension" \ ? 
+"PROP-SET" MAIN VLE ? ; "METCBAR_MOLE" ; \ P1 ID = PHIMX \ \ P1 ID = GAMMA \ 
+\ P1 ID = PL \ \ P2 SUBSTREAM = MIXED PHASE = ( V L ) \ \ DESCRIPTION 
+DESCRIPTION = "Fugacity, activity, and vapor pressure" \ ? "PROP-SET" MAIN 
+VLLE ? ; "METCBAR_MOLE" ; \ P1 ID = PHIMX \ \ P1 ID = GAMMA \ \ P1 ID = PL \ 
+\ P2 SUBSTREAM = MIXED PHASE = ( V L1 L2 ) \ \ DESCRIPTION DESCRIPTION = 
+"Fugacity, activity, and vapor pressure" \ ? STREAM MATERIAL "G-IN" ? ; 
+"SI-CBAR_MOLE" ; \ SUBSTREAM SSID = MIXED TEMP = 20. <22> <4> PRES = 29. <20> 
+<5> BASIS = "MOLE-FRAC" FLOWBASE = VOLUME TOTFLOW = 1000. <-99> <7> TOTAL = 
+1. <-4> <0> JUNK = 3 \ \ MOLE-FLOW SSID1 = MIXED CID = N2 FLOW = 0.23 <-4> 
+<0> /  SSID1 = MIXED CID = H2 FLOW = 0.65 <-4> <0> /  SSID1 = MIXED CID = CO2 
+FLOW = 0.12 <-4> <0> \ ? STREAM MATERIAL "L-IN" ? ; "SI-CBAR_MOLE" ; \ 
+SUBSTREAM SSID = MIXED TEMP = -40. <22> <4> PRES = 29. <20> <5> BASIS = 
+"MOLE-FRAC" FLOWBASE = VOLUME TOTFLOW = 50. <-99> <7> TOTAL = 1. <-89> <0> 
+JUNK = 1 \ \ MOLE-FLOW SSID1 = MIXED CID = METHANOL FLOW = 1. <-4> <0> \ ? 
+BLOCK RADFRAC ABSORBER ? ; "SI-CBAR_MOLE" ; ; ABSBR1 ; \ PARAM NSTAGE = 30 
+ABSORBER = YES MAXOL = 200 FLASH-TOLIL = 1E-005 <0> <0> OPT-PRES = "DP-STAGE" 
+\ \ "COL-CONFIG" CONDENSER = NONE REBOILER = NONE \ \ FEEDS FEED-SID = "G-IN" 
+FEED-STAGE = 31 /  FEED-SID = "L-IN" FEED-STAGE = 1 FEED-CONVE2 = "ON-STAGE" 
+\ \ PRODUCTS PROD-STREAM = "G-OUT" PROD-STAGE = 1 PROD-PHASE = V P-S = N /  
+PROD-STREAM = "L-OUT" PROD-STAGE = 30 PROD-PHASE = L P-S = N \ \ "P-SPEC2" 
+PRES1 = 28. <20> <5> \ \ "COL-SPECS" DP-STAGE = 0.015 <75> <5> BASIS-RDV = 
+1.0 <0> <0> \ \ "KLL-VECS" \ \ PROPERTIES OPSETNAME = "NRTL-RK" HENRY-COMPS
+ = "HC-1" \ \ "TRSZ-VECS" \ \ "PCKSR-VECS" \ ? "DESIGN-SPEC" "DS-1" ? ; 
+"SI-CBAR_MOLE" ; \ DEFINE FVN = YCO2 FVN-VARTYPE = "MOLE-FRAC" FVN-STREAM = 
+"G-OUT" FVN-SUBS = MIXED FVN-COMPONEN = CO2 OPT-CATEG = STREAM \ \ SPEC EXPR1
+ = "YCO2" EXPR2 = "0.005" \ \ "TOL-SPEC" TOL = "1E-4" \ \ VARY VARY-VARTYPE
+ = "STREAM-VAR" VARYSTREAM = "L-IN" VARYSUBS = MIXED VARYVARIABLE = "MASS-FLOW" 
+\ \ LIMITS LOWER = "30000" UPPER = "100000" \ ? FORTRAN "F-1" ? ; 
+"SI-CBAR_MOLE" ; \ DEFINE FVN = NT FVN-VARTYPE = "BLOCK-VAR" FVN-BLOCK = 
+ABSORBER FVN-VARIABLE = NSTAGE FVN-SENTENCE = PARAM OPT-CATEG = BLOCK \ \ 
+DEFINE FVN = NGIN FVN-VARTYPE = "BLOCK-VAR" FVN-BLOCK = ABSORBER FVN-VARIABLE
+ = "FEED-STAGE" FVN-SENTENCE = FEEDS FVN-ID1 = "G-IN" OPT-CATEG = BLOCK \ \ 
+FORTRAN FORTRAN-EXEC = ( "       ngin=nt+1" ) \ \ EXECUTE WHEN = BEFORE 
+BLOCK-TYPE = BLOCK BLK-ID = ABSORBER \ ? SENSITIVITY "S-1" ? ; "SI-CBAR_MOLE" 
+; \ DEFINE FVN = FLIN FVN-VARTYPE = "STREAM-VAR" FVN-STREAM = "L-IN" FVN-SUBS
+ = MIXED FVN-VARIABLE = "MASS-FLOW" OPT-CATEG = STREAM \ \ TABULATE COLNO = 2 
+EXPR = "FLIN" \ \ VARY SCRUD = 1 VARY-VARTYPE = "BLOCK-VAR" VARYBLOCK = 
+ABSORBER VARYVARIABLE = NSTAGE VARYSENTENCE = PARAM LIST = ( 4. <0> <0> 7. 
+<0> <0> 10. <0> <0> 13. <0> <0> 16. <0> <0> 20. <0> <0> 25. <0> <0> 30. <0> 
+<0> ) OPT-LIST = OLIST \ ? "CONV-OPTIONS" ? ? REPORT REPORT ? ? REPORT 
+"BLOCK-REPORT" ? ? REPORT "STREAM-REPOR" ? \ OPTIONS MOLEFLOW = MOLEFLOW 
+MASSFLOW = MASSFLOW MOLEFRAC = MOLEFRAC MASSFRAC = MASSFRAC \ ? REPORT 
+"FLOWSHEET-RE" ? ? REPORT "PROPERTY-REP" ? ? REPORT "ADA-REPORT" ? ? REPORT 
+"BATCH-OPERAT" ? ; "SI-CBAR_MOLE" ; 
+
+ GRAPHICS_BACKUP
+PFS V 5.00
+$CONFIG
+paramdata ENRTL-RK
+paramdata VLE-IG
+paramdata VLE-RK
+paramdata VLE-HOC
+paramdata LLE-LIT
+paramdata LLE-ASPEN
+paramdata VLE-LIT
+paramdata BINARY
+paramdata EOS-LIT
+paramdata HENRY
+purebank PURE10
+purebank AQUEOUS
+purebank SOLIDS
+purebank INORGANIC
+regdbank 1
+ftn_check 1
+autoblockid 1
+autostreamid 1
+showblockid 1
+showstreamid 1
+autoplacement 1
+grid 2
+gridresolution 0.100000
+scale 0
+streamprefix 
+blockprefix B
+labelscale 1.000000
+qwformat %.0f
+tempformat %.0f
+presformat %.0f
+flowformat %.0f
+strmqwformat %.0f
+pseudobatch 0
+partial 0
+animation 1
+runanyway 1
+polyplusenabled 1
+dynaplusenabled 1
+bfracenabled 1
+rtfenabled 1
+#
+#
+PFSVData {A0DFFFE6-908E-11CE-A964-0000C08C668E}
+# of PFS Objects = 6
+SIZE -3.21407 3.70854 -3.98994 1.30617
+BLOCK
+ID: ABSORBER
+Version: 1
+ICON: ABSBR1
+Flag 0
+Section GLOBAL
+At 0.200905 -1.206884
+Label At -0.733748 0.232322
+Scale 2.181818 Modifier 0
+STREAM
+ID: G-IN
+Version: 1
+Flag 0
+TYPE 0 TERMINAL 1
+At -3.214069 -2.392390
+Label At 1.357272 0.000000
+ROUTE 0 0
+$ $ 0.0 0.0
+ROUTE 1 0
+r r -3.214069 -2.392390
+x x -0.499525 -2.392390
+y x -0.499525 -2.395405
+t l -0.299525 -2.395405
+$ D -0.009521 -1.188521
+$ C 0.000000 0.0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: L-IN
+Version: 1
+Flag 0
+TYPE 0 TERMINAL 1
+At 3.708544 -0.307266
+Label At -1.393179 0.000000
+ROUTE 0 0
+$ $ 0.0 0.0
+ROUTE 1 0
+r l 3.708544 -0.307266
+x x 0.922186 -0.307266
+y x 0.922186 -0.310281
+t r 0.722186 -0.310281
+$ D 1.012190 0.896603
+$ C 0.000000 0.0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: G-OUT
+Version: 1
+Flag 0
+TYPE 0 TERMINAL 2
+At 2.713960 1.306171
+Label At -1.246143 0.000000
+ROUTE 0 0
+r l 2.713960 1.306171
+x y 0.200905 1.306171
+y 0 0.200905 0.465843
+t u 0.200905 0.265843
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+ROUTE 1 0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: L-OUT
+Version: 1
+Flag 0
+TYPE 0 TERMINAL 2
+At 3.108572 -3.989937
+Label At -1.453834 0.000000
+ROUTE 0 0
+r l 3.108572 -3.989937
+x y 0.200905 -3.989937
+y 0 0.200905 -2.879611
+t d 0.200905 -2.679610
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+ROUTE 1 0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+LEGEND
+Version: 2
+Unfixed
+# of PFS Objects = 0
+VIEWPORT -6.237500 9.252035 2.490012 -6.823441
+LAYOUT
+TableFormat 1
+Pages 1 1 1 1
+PFDFLAG 255 255
+PFDMODE 0
+SCALE 0.019732
+
+$_SUMMARY_FILE
+ MMSUMMARY10.1-0                                                                
+ IDSET RUNID (PROPERTIES) (114 *5)                                              
+ IDSET IT (PROPERTIES) (117 *6 119 *6 115 *1)                                   
+ LSET RUNID (%RUNID)                                                            
+ LSET IT (%IT)                                                                  
+ IDSET VERS (PROPERTIES) (345 *6 346 *6 347 *6 348 *6 355 *6)                   
+ LSET VERS (%VERS)                                                              
+ DSET RUN-STATUS VERS @VERS ( "10.1-0" "WIN32" "ZHEJUPRC01.AP" "user1" "7-106"  
+ )                                                                              
+ DSET RUN-STATUS IT @IT ( "APRIL 4, 2005       9:42:52 A.M." "_4151ytc.inm" 0)  
+ DSET RUN-STATUS CURRENCY @CURRENCY ( "$" )                                     
+ IDSET ID_NCC (COMPONENTS) (N2 H2 CO2 METHANOL)                                 
+ IDSET ALIAS (COMPONENTS) (1 *6)                                                
+ LSET ALIAS ( %ID_NCC & %ALIAS)                                                 
+ DSET RUN-STATUS RUNID @RUNID ("_4151ytc")                                      
+ DSET RUN-STATUS RUNID @RUNID ("_4151ytc")                                      
+ IDSET STATUS (PROPERTIES) (125 *1 126 *1 127 *1 128 *1 129 *1 130 *1)          
+ LSET STATUS (%STATUS)                                                          
+ IDSET PPSTAT (PROPERTIES) (272 *1)                                             
+ LSET PPSTAT (%PPSTAT)                                                          
+ DSET RUN-STATUS PPSTAT @PPSTAT (2)                                             
+ IDSET IDRXBAL0 (PROPERTIES) ( 73 *2 <11> 74 *2 75 *2 <10> 76 *2 77 *2 <13> 78  
+ *2)                                                                            
+ IDSET ID_RXBAL (PROPERTIES) ( 73 *2 <11> 358 *2 <11> 359 *2 <11> 74 *2 75 *2   
+ <10> 360 *2 <10> 361 *2 <10> 76 *2 362 *2 <10> 363 *2 <10> 364 *2 <10> 365 *2  
+ 366 *2 <11> 367 *2 <11> 368 *2 <11> 369 *2 370 *2 <10> 371 *2 <10> 372 *2 <10> 
+ 373 *2 77 *2 <13> 374 *2 <13> 375 *2 <13> 78 *2)                               
+ IDSET ID_MOLE (PROPERTIES) ( 79 *2 <11> 80 *2)                                 
+ LSET FLWBAL ( %ID_NCC & %ID_MOLE %IDRXBAL0)                                    
+ IDSET ID_XY (PROPERTIES) (43 *2 36 *2 39 *2 40 *2)                             
+ IDSET ID_XX (PROPERTIES) (43 *2 37 *2 38 *2 40 *2)                             
+ IDSET ID_XXY (PROPERTIES) (43 *2 37 *2 38 *2 39 *2 41 *2 42 *2)                
+ LSET VLE ( %ID_XY & %ID_NCC)                                                   
+ LSET LLE ( %ID_XX & %ID_NCC)                                                   
+ LSET VLE3 ( %ID_XXY & %ID_NCC)                                                 
+ IDSET ID_KODE (PROPERTIES) (44 *1)                                             
+ IDSET BLKIN (BLKIN) (STREAMID ?)                                               
+ LSET BLKIN (%BLKIN)                                                            
+ IDSET BLKOUT (BLKOUT) (STREAMID ?)                                             
+ LSET BLKOUT (%BLKOUT)                                                          
+ IDSET TYPIN (TYPIN) (STREAMID ?)                                               
+ LSET TYPIN (%TYPIN)                                                            
+ IDSET TYPOUT (TYPOUT) (STREAMID ?)                                             
+ LSET TYPOUT (%TYPOUT)                                                          
+ IDSET PORT_NO (PROPERTIES) (236 *1 237 *1 238 *1)                              
+ IDSET IDS_0 (SUBSTREAM) ($TOTAL)                                               
+ IDSET IDS_1 (SUBSTREAM) (MIXED)                                                
+ IDSET BLKSTAT (PROPERTIES) (120 *1 121 *1)                                     
+ IDSET BLKMSG (PROPERTIES) (122 *6)                                             
+ LSET BLKSTAT (%BLKSTAT)                                                        
+ LSET BLKMSG (%BLKMSG)                                                          
+ IDSET DESC (PROPERTIES) (113 *6)                                               
+ LSET DESC (%DESC)                                                              
+ IDSET IDPH_V (PHASE) (VAPOR)                                                   
+ IDSET IDPH_L (PHASE) (LIQUID)                                                  
+ IDSET IDPH_S (PHASE) (SOLID)                                                   
+ IDSET IDPH_L1 (PHASE) (LIQUID_1)                                               
+ IDSET IDPH_T (PHASE) (TOTAL)                                                   
+ IDSET IDPH_L2 (PHASE) (LIQUID_2)                                               
+ IDSET IDWET (BASIS) (WET)                                                      
+ IDSET IDDRY (BASIS) (DRY)                                                      
+ IDSET SP (PROPERTIES) (118 *6)                                                 
+ LSET SP (%SP)                                                                  
+ IDSET SPSTAT (SPSTAT) (116 *1)                                                 
+ LSET SPSTAT ( %SPSTAT)                                                         
+ IDSET ID_SENS (PROPERTIES) (105 *2)                                            
+ IDSET IDERR (PROPERTIES) (131 *1)                                              
+ DSET RUN-STATUS SP @SP ( "APRIL 4, 2005 9:42:52 A.M." )                        
+ IDSET TITLE (PROPERTIES) (113 *6)                                              
+ LSET TITLE (%TITLE)                                                            
+ DSET RUN-STATUS TITLE @TITLE ( "ABSORPTION" )                                  
+ IDSET FOR (PROPERTIES) (737 *1)                                                
+ LSET FOR (%FOR)                                                                
+ IDSET FORSTAT (PROPERTIES) (738 *1)                                            
+ LSET FORSTAT (%FORSTAT)                                                        
+ IDSET MW (PROPERTIES) (269 *2)                                                 
+ LSET MW (%MW & %ID_NCC)                                                        
+ DSET MW MW @MW (2.80134800D+01 2.01588000D+00 4.40098000D+01 3.20421600D+01)   
+ IDSET VST (PROPERTIES) (270 *2 <43> )                                          
+ LSET VST (%VST & %ID_NCC)                                                      
+ DSET VST VST @VST (5.35578000D-02 <1> 5.35578000D-02 <1> 5.35578000D-02 <1>    
+ 4.03346000D-02 <1> )                                                           
+ IDSET TB (PROPERTIES) (271 *2 <22> )                                           
+ LSET TB (%TB & %ID_NCC)                                                        
+ DSET TB TB @TB (-1.95806000D+02 <4> -2.52760000D+02 <4> -7.84500000D+01 <4>    
+ 6.47000000D+01 <4> )                                                           
+ IDSET ISODES (PROPERTIES) (123 *5 124 *5 132 *5)                               
+ IDSET ID_WORK (PROPERTIES) (112 *2 <19> )                                      
+ LSET L_WORK (%ISODES %ID_WORK)                                                 
+ IDSET ID_HEAT (PROPERTIES) (1 *2 <13> 815 *2 <22> 816 *2 <22> )                
+ LSET L_HEAT (%ISODES %ID_HEAT)                                                 
+ IDSET ID_LTVC (PROPERTIES) (817 *2 <22> )                                      
+ IDSET ID_LQVC (PROPERTIES) (818 *2 <13> )                                      
+ IDSET ID_TPQV (PROPERTIES) (1 *2 <13> 31 *2 <22> 32 *2 <20> 2 *2 3 *2)         
+ IDSET ID_QTP (PROPERTIES) (1 *2 <13> 31 *2 <22> 32 *2 <20> 3 *2)               
+ IDSET TOTAL (PROPERTIES) (524 *2 <10> 525 *2 <10> 526 *2 <10> )                
+ IDSET ENERGY (PROPERTIES) (504 *2 <13> 505 *2 <13> 506 *2 <13> 1 *2 <13> )     
+ IDSET TOTAX (PROPERTIES) (524 *2 <18> 525 *2 <18> 526 *2 <18> )                
+ IDSET ENERGX (PROPERTIES) (504 *2 <5> 505 *2 <5> 506 *2 <5> 1 *2 <5> )         
+ LSET BPSBAL3 ( %TOTAL %ENERGY)                                                 
+ LSET BPBATCH ( %TOTAX %ENERGX)                                                 
+ IDSET ID_1 (NPOINT) (#1)                                                       
+ IDSET ID_2 (PROPERTIES) (259 *5 241 *2 255 *2 256 *2 260 *2 126 *6 258         
+ *5)                                                                            
+ LSET L_1 (%ID_2 & %ID_1)                                                       
+ DSET CONV-SUM SPEC-SUMMARY CNV_SPEC @L_1 ("DS-1" -5.37764496D-06               
+ 1.00000000D-04 -5.37764496D-02 6.22128537D+04 "#" $OLVER01 )                   
+ DSET CONV-SUM SPEC-SUMMARY COMPSTAT @L_1 (0)                                   
+ DSET FORTRAN F-1 COMPSTAT @L_1 (0)                                             
+ DSET FORTRAN F-1 FORTSTAT @BLKSTAT (0 0)                                       
+ DSET RUN-STATUS FORSTAT @FORSTAT (0)                                           
+ IDSET ID_3 (PROPERTIES) (131 *6 265 *1 266 *1 )                                
+ LSET L_2 (%ID_3)                                                               
+ DSET CONVERGENCE SECANT $OLVER01 OPT_STAT @L_2 ("OK" 44 1 )                    
+ IDSET ID_4 (NPOINT) (#1)                                                       
+ IDSET ID_5 (PROPERTIES) (257 *6 262 *6 260 *2 261 *2 256 *2 126 *6 )           
+ LSET L_3 (%ID_5 & %ID_4)                                                       
+ DSET CONVERGENCE SECANT $OLVER01 CONV_PLT @L_3 ("TOTAL MASSFL" "KG/HR"         
+ 6.22128537D+04 6.22128537D+04 -5.37764496D-02 "" )                             
+ DSET CONVERGENCE SECANT $OLVER01 COMPSTAT @L_1 (0)                             
+ DSET CONVERGENCE SECANT $OLVER01 BLKSTAT @BLKSTAT (0 0)                        
+ IDSET ID_6 (SPECNAME) ("DS-1" )                                                
+ IDSET ID_7 (NPOINT) (#1)                                                       
+ IDSET ID_8 (PROPERTIES) (222 *1 260 *2 241 *2 256 *2 )                         
+ LSET L_4 ((%ID_8 & %ID_7) & %ID_6)                                             
+ DSET CONVERGENCE SECANT $OLVER01 CONV_HIS_DS @L_4 (1 6.22128537D+04            
+ -5.37764496D-06 -5.37764496D-02 )                                              
+ IDSET ID_9 (NPOINT) (#1)                                                       
+ IDSET ID_10 (NCOL) (#1)                                                        
+ IDSET ID_11 (PROPERTIES) (106 *6 107 *6 108 *6 109 *6 110 *6 111 *6 )          
+ IDSET ID_12 (PROPERTIES) (260 *2)                                              
+ IDSET ID_13 (PROPERTIES) (131 *1 )                                             
+ LSET L_5 ((%ID_13 & %ID_9) ((%ID_11 (%ID_12 & %ID_9 ) ) & %ID_10) )            
+ DSET CONVERGENCE SECANT $OLVER01 IHMXET @L_5 ( 1 "MAXIMUM" "ERR/TOL" * * * *   
+ -5.37764496D-02 )                                                              
+ DSET FLWBAL @FLWBAL (0.D0 <3> 0.D0 <3> 5.68434189D-14 <3> -2.27373675D-13 <3>  
+ 0.D0 0.D0 4.00815576D-16 -1.17106727D-16 0.D0 <3> 0.D0 0.D0 <3> 0.D0           
+ 2.36406387D+02 <1> 1.60201252D-06)                                             
+ IDSET ID_14 (NPOINTS) ( #8)                                                    
+ IDSET ID_15 (NCOL) ( #2)                                                       
+ IDSET ID_16 (PROPERTIES) (106 *6 107 *6 108 *6 109 *6 110 *6 111 *6 356 *6)    
+ IDSET ID_17 (PROPERTIES) (105 *2)                                              
+ IDSET ID_18 (PROPERTIES) (131 *1)                                              
+ LSET L_6 (( %ID_18 & %ID_14) ( %ID_16 ( %ID_17 & %ID_14) ) & %ID_15)           
+ DSET SENSITIVITY S-1 BLKMSG @BLKMSG ( "BLOCK COMPLETED NORMALLY" )             
+ DSET SENSITIVITY S-1 COMPSTAT @L_1 (0)                                         
+ DSET SENSITIVITY S-1 SNS_TAB @L_6 (0 0 0 0 0 0 0 0 "VARY 1  " "ABSORBER"       
+ "PARAM   " "NSTAGE  " * * * 4.00000000D+00 7.00000000D+00 1.00000000D+01       
+ 1.30000000D+01 1.60000000D+01 2.00000000D+01 2.50000000D+01 3.00000000D+01     
+ "FLIN    " * * * * "KG/HR   " * 9.38804501D+04 6.99708952D+04 6.46112465D+04   
+ 6.30394400D+04 6.26848012D+04 6.24596959D+04 6.22892064D+04 6.22128537D+04 )   
+ DSET ALIAS @ALIAS ( "N2" "H2" "CO2" "CH4O" )                                   
+ IDSET ID_19 (PROPERTIES) (8 *2 <13> 7 *2 <13> 62 *2 <13> 14 *2 13 *2 <22> 12   
+ *2 <22> 60 *2 54 *2 <11> 55 *2 <11> 56 *2 <11> 57 *2 <11> 149 *2 <13> 150 *2   
+ 1137 *2 <11> 1138 *2 <11> 1139 *2 1140 *2 <11> 1141 *2 1142 *2 <11> 1143 *2    
+ <11> 1144 *2 <10> 1145 *2 <10> 1146 *2 1147 *2 <10> 1148 *2 1149 *2 <10> 1150  
+ *2 <10> 1151 *2 <12> 1152 *2 <12> 1153 *2 1154 *2 <12> 1155 *2 1156 *2 <12>    
+ 1157 *2 <12> 1158 *2 1159 *2 <20> 1160 *2 <20> 1161 *2 <75> 1162 *2 <75> 1163  
+ *2 <75> 1164 *2 <13> )                                                         
+ LSET L_7 (%ID_RXBAL %ID_19)                                                    
+ DSET BLOCK RADFRAC ABSORBER BLKSTAT @BLKSTAT (0 0)                             
+ DSET BLOCK RADFRAC ABSORBER COMPSTAT @L1 (0)                                   
+ DSET BLOCK RADFRAC ABSORBER BLKIN @BLKIN (2 G-IN L-IN)                         
+ DSET BLOCK RADFRAC ABSORBER TYPIN @TYPIN (2 MATERIAL MATERIAL)                 
+ DSET BLOCK RADFRAC ABSORBER BLKOUT @BLKOUT (2 G-OUT L-OUT)                     
+ DSET BLOCK RADFRAC ABSORBER TYPOUT @TYPOUT (2 MATERIAL MATERIAL)               
+ DSET BLOCK RADFRAC ABSORBER RES_D @L_7 (3.12342184D+03 <3> 3.12342184D+03 <3>  
+ 0.D0 <3> 0.D0 7.76175099D+04 <3> 7.76175099D+04 <3> * <3> 0.D0 * <3> * <3> *   
+ <3> * 3.12342184D+03 <3> 3.12342184D+03 <3> 0.D0 <3> 0.D0 7.76175099D+04 <3>   
+ 7.76175099D+04 <3> * <3> 0.D0 -1.47568141D+08 <1> -1.47568377D+08 <1> * <1>    
+ 1.60201252D-06 0.D0 <1> 0.D0 <1> * <1> * -3.93455861D+01 <4> -1.85380756D+01   
+ <4> * 1.95725285D+03 <3> 2.08599929D+03 <3> 1.03742255D+03 <3> 1.20950643D+03  
+ <3> * <1> * 1.03742255D+03 <3> 2.08599929D+03 <3> 1.88664961D+00               
+ 1.95725285D+03 <3> 5.79821113D-01 1.20950643D+03 <3> * <3> 9.29296755D+03 <3>  
+ 6.83245423D+04 <3> 6.74356940D+00 6.26677716D+04 <3> 2.43264395D-01            
+ 1.66209284D+04 <3> * <3> * <7> * <7> * * <7> * * <7> * <7> * 2.80000000D+01 <5>
+ 2.80150000D+01 <5> 1.50000000D-02 <5> * <5> * <5> * <1> )                      
+ IDSET ID_20 (STRSEQ) ( #2)                                                     
+ LSET L_8 (%PORT_NO & %ID_20)                                                   
+ LSET L_9 (%PORT_NO & %ID_20)                                                   
+ DSET BLOCK RADFRAC ABSORBER IN_PORT @L_8 (0 31 * 0 1 *)                        
+ DSET BLOCK RADFRAC ABSORBER OUT_PORT @L_9 (0 1 * 2 30 *)                       
+ IDSET ID_21 (PROPERTIES) (8 *2 <13> 7 *2 <13> 149 *2 <13> )                    
+ LSET L_10 ( %ID_21)                                                            
+ DSET BLOCK RADFRAC ABSORBER RESD @L_10 ( 0.D0 <1> 0.D0 <1> * <1> )             
+ IDSET ID_22 (NSTAGE) ( #30 )                                                   
+ IDSET ID_23 (COMPONENTS) ( N2 H2 CO2 METHANOL )                                
+ IDSET ID_24 (PROPERTIES) (810 *2)                                              
+ LSET L_11 ( %ID_24 & %ID_23 & %ID_22)                                          
+ DSET BLOCK RADFRAC ABSORBER R6_DPLS @L_11 ( 1.00000000D+00 1.00000000D+00      
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00 1.00000000D+00     
+ 1.00000000D+00 1.00000000D+00 1.00000000D+00 )                                 
+ IDSET ID_25 (NPOINT) (#4)                                                      
+ IDSET ID_26 (COMPONENTS) ( G-OUT L-OUT)                                        
+ IDSET ID_27 (PROPERTIES) (138 *6)                                              
+ IDSET ID_28 (PROPERTIES) (513 *2)                                              
+ LSET L_12 (( %ID_27 ( %ID_26 & %ID_28 )) & %ID_25)                             
+ DSET BLOCK RADFRAC ABSORBER SPFRC @L_12 ( "N2" 9.87927287D-01 1.20727131D-02   
+ "H2" 9.94043447D-01 5.95655331D-03 "CO2" 3.65361465D-02 9.63463854D-01         
+ "METHANOL" 4.61225706D-05 9.99953877D-01 )                                     
+ IDSET ID_29 (STREAMS) ( G-OUT L-OUT )                                          
+ IDSET ID_30 (PROPERTIES) ( 1167 *2 <11> 1168 *2 <10> 1169 *2 <12> )            
+ LSET L_13 ( %ID_30 & %ID_29 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RD_PROD @L_13 ( 1.03742255D+03 <3> 9.29296755D+03  
+ <3> * <7> 2.08599929D+03 <3> 6.83245423D+04 <3> * <7> )                        
+ IDSET ID_31 (TRAY_NO) ( #30)                                                   
+ IDSET ID_32 (PROPERTIES) (31 *2 <22> )                                         
+ LSET L_14 ( %ID_32 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PRO2 @L_14 ( -3.93455861D+01 <4>               
+ -3.83577025D+01 <4> -3.70409527D+01 <4> -3.54276730D+01 <4> -3.36399234D+01 <4>
+ -3.18830435D+01 <4> -3.02580003D+01 <4> -2.89294541D+01 <4> -2.79231532D+01 <4>
+ -2.72030700D+01 <4> -2.67081975D+01 <4> -2.63755088D+01 <4> -2.61494601D+01 <4>
+ -2.59939493D+01 <4> -2.59491648D+01 <4> -2.58981206D+01 <4> -2.58511103D+01 <4>
+ -2.58155693D+01 <4> -2.57867326D+01 <4> -2.57620861D+01 <4> -2.57396396D+01 <4>
+ -2.57180009D+01 <4> -2.56967365D+01 <4> -2.56766338D+01 <4> -2.56577516D+01 <4>
+ -2.56367460D+01 <4> -2.55946364D+01 <4> -2.54202502D+01 <4> -2.44377299D+01 <4>
+ -1.85380756D+01 <4> )                                                          
+ IDSET ID_33 (PROPERTIES) (32 *2 <20> )                                         
+ LSET L_15 ( %ID_33 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PRO2 @L_15 ( 2.80000000D+01 <5> 2.80150000D+01 
+ <5> 2.80300000D+01 <5> 2.80450000D+01 <5> 2.80600000D+01 <5> 2.80750000D+01 <5>
+ 2.80900000D+01 <5> 2.81050000D+01 <5> 2.81200000D+01 <5> 2.81350000D+01 <5>    
+ 2.81500000D+01 <5> 2.81650000D+01 <5> 2.81800000D+01 <5> 2.81950000D+01 <5>    
+ 2.82100000D+01 <5> 2.82250000D+01 <5> 2.82400000D+01 <5> 2.82550000D+01 <5>    
+ 2.82700000D+01 <5> 2.82850000D+01 <5> 2.83000000D+01 <5> 2.83150000D+01 <5>    
+ 2.83300000D+01 <5> 2.83450000D+01 <5> 2.83600000D+01 <5> 2.83750000D+01 <5>    
+ 2.83900000D+01 <5> 2.84050000D+01 <5> 2.84200000D+01 <5> 2.84350000D+01 <5> )  
+ IDSET ID_34 (PROPERTIES) (62 *2 <13> )                                         
+ LSET L_16 ( %ID_34 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PRO2 @L_16 ( 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0   
+ <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1>    
+ 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0   
+ <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1>    
+ 0.D0 <1> )                                                                     
+ IDSET ID_35 (PROPERTIES) (63 *2 <11> )                                         
+ LSET L_17 ( %ID_35 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PRO2 @L_17 ( 1.95725285D+03 <3> 1.96857853D+03 
+ <3> 1.98381557D+03 <3> 2.00264907D+03 <3> 2.02368167D+03 <3> 2.04479994D+03 <3>
+ 2.06374978D+03 <3> 2.07921998D+03 <3> 2.09092395D+03 <3> 2.09929714D+03 <3>    
+ 2.10506755D+03 <3> 2.10895655D+03 <3> 2.11153064D+03 <3> 2.11319689D+03 <3>    
+ 2.11454938D+03 <3> 2.11558315D+03 <3> 2.11635289D+03 <3> 2.11694348D+03 <3>    
+ 2.11740839D+03 <3> 2.11778297D+03 <3> 2.11808944D+03 <3> 2.11834055D+03 <3>    
+ 2.11854650D+03 <3> 2.11871826D+03 <3> 2.11886605D+03 <3> 2.11898448D+03 <3>    
+ 2.11898551D+03 <3> 2.11831123D+03 <3> 2.11367751D+03 <3> 2.08599929D+03 <3> )  
+ IDSET ID_36 (PROPERTIES) (64 *2 <11> )                                         
+ LSET L_18 ( %ID_36 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PRO2 @L_18 ( 1.03742255D+03 <3> 1.05308177D+03 
+ <3> 1.06440746D+03 <3> 1.07964450D+03 <3> 1.09847799D+03 <3> 1.11951060D+03 <3>
+ 1.14062887D+03 <3> 1.15957871D+03 <3> 1.17504890D+03 <3> 1.18675287D+03 <3>    
+ 1.19512606D+03 <3> 1.20089647D+03 <3> 1.20478547D+03 <3> 1.20735956D+03 <3>    
+ 1.20902582D+03 <3> 1.21037831D+03 <3> 1.21141207D+03 <3> 1.21218182D+03 <3>    
+ 1.21277240D+03 <3> 1.21323732D+03 <3> 1.21361190D+03 <3> 1.21391837D+03 <3>    
+ 1.21416948D+03 <3> 1.21437542D+03 <3> 1.21454719D+03 <3> 1.21469497D+03 <3>    
+ 1.21481341D+03 <3> 1.21481444D+03 <3> 1.21414016D+03 <3> 1.20950643D+03 <3> )  
+ IDSET ID_37 (PROPERTIES) (91 *2 <11> )                                         
+ LSET L_19 ( %ID_37 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PRO2 @L_19 ( 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> )                                                                     
+ IDSET ID_38 (PROPERTIES) (92 *2 <11> )                                         
+ LSET L_20 ( %ID_38 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PRO2 @L_20 ( 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 1.18182822D+03 <3> )                                                           
+ IDSET ID_39 (PROPERTIES) (65 *2 <11> )                                         
+ LSET L_21 ( %ID_39 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PRO2 @L_21 ( 1.94159363D+03 <3> 0.D0 <3> 0.D0  
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> )                                                            
+ IDSET ID_40 (PROPERTIES) (66 *2 <11> )                                         
+ LSET L_22 ( %ID_40 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PRO2 @L_22 ( 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 2.08599929D+03 <3> )                                                           
+ IDSET ID_41 (PROPERTIES) (93 *2 <11> )                                         
+ LSET L_23 ( %ID_41 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PRO2 @L_23 ( 1.03742255D+03 <3> 0.D0 <3> 0.D0  
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> )                                                            
+ IDSET ID_42 (PROPERTIES) (31 *2 <22> )                                         
+ LSET L_24 ( %ID_42 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PR2S @L_24 ( -3.93455861D+01 <4>               
+ -3.83577025D+01 <4> -3.70409527D+01 <4> -3.54276730D+01 <4> -3.36399234D+01 <4>
+ -3.18830435D+01 <4> -3.02580003D+01 <4> -2.89294541D+01 <4> -2.79231532D+01 <4>
+ -2.72030700D+01 <4> -2.67081975D+01 <4> -2.63755088D+01 <4> -2.61494601D+01 <4>
+ -2.59939493D+01 <4> -2.59491648D+01 <4> -2.58981206D+01 <4> -2.58511103D+01 <4>
+ -2.58155693D+01 <4> -2.57867326D+01 <4> -2.57620861D+01 <4> -2.57396396D+01 <4>
+ -2.57180009D+01 <4> -2.56967365D+01 <4> -2.56766338D+01 <4> -2.56577516D+01 <4>
+ -2.56367460D+01 <4> -2.55946364D+01 <4> -2.54202502D+01 <4> -2.44377299D+01 <4>
+ -1.85380756D+01 <4> )                                                          
+ IDSET ID_43 (PROPERTIES) (32 *2 <20> )                                         
+ LSET L_25 ( %ID_43 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PR2S @L_25 ( 2.80000000D+01 <5> 2.80150000D+01 
+ <5> 2.80300000D+01 <5> 2.80450000D+01 <5> 2.80600000D+01 <5> 2.80750000D+01 <5>
+ 2.80900000D+01 <5> 2.81050000D+01 <5> 2.81200000D+01 <5> 2.81350000D+01 <5>    
+ 2.81500000D+01 <5> 2.81650000D+01 <5> 2.81800000D+01 <5> 2.81950000D+01 <5>    
+ 2.82100000D+01 <5> 2.82250000D+01 <5> 2.82400000D+01 <5> 2.82550000D+01 <5>    
+ 2.82700000D+01 <5> 2.82850000D+01 <5> 2.83000000D+01 <5> 2.83150000D+01 <5>    
+ 2.83300000D+01 <5> 2.83450000D+01 <5> 2.83600000D+01 <5> 2.83750000D+01 <5>    
+ 2.83900000D+01 <5> 2.84050000D+01 <5> 2.84200000D+01 <5> 2.84350000D+01 <5> )  
+ IDSET ID_44 (PROPERTIES) (62 *2 <13> )                                         
+ LSET L_26 ( %ID_44 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PR2S @L_26 ( 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0   
+ <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1>    
+ 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0   
+ <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1> 0.D0 <1>    
+ 0.D0 <1> )                                                                     
+ IDSET ID_45 (PROPERTIES) (63 *2 <10> )                                         
+ LSET L_27 ( %ID_45 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PR2S @L_27 ( 6.26677716D+04 <3> 6.31651567D+04 
+ <3> 6.38344502D+04 <3> 6.46619736D+04 <3> 6.55864368D+04 <3> 6.65148694D+04 <3>
+ 6.73485744D+04 <3> 6.80294204D+04 <3> 6.85446417D+04 <3> 6.89132942D+04 <3>    
+ 6.91673732D+04 <3> 6.93385941D+04 <3> 6.94518053D+04 <3> 6.95254873D+04 <3>    
+ 6.95849235D+04 <3> 6.96302784D+04 <3> 6.96640575D+04 <3> 6.96899241D+04 <3>    
+ 6.97102525D+04 <3> 6.97266034D+04 <3> 6.97399400D+04 <3> 6.97508260D+04 <3>    
+ 6.97597245D+04 <3> 6.97671352D+04 <3> 6.97735018D+04 <3> 6.97785671D+04 <3>    
+ 6.97783944D+04 <3> 6.97481220D+04 <3> 6.95408145D+04 <3> 6.83245423D+04 <3> )  
+ IDSET ID_46 (PROPERTIES) (64 *2 <10> )                                         
+ LSET L_28 ( %ID_46 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PR2S @L_28 ( 9.29296755D+03 <3> 9.74788548D+03 
+ <3> 1.02452706D+04 <3> 1.09145641D+04 <3> 1.17420875D+04 <3> 1.26665506D+04 <3>
+ 1.35949833D+04 <3> 1.44286883D+04 <3> 1.51095343D+04 <3> 1.56247556D+04 <3>    
+ 1.59934081D+04 <3> 1.62474871D+04 <3> 1.64187080D+04 <3> 1.65319192D+04 <3>    
+ 1.66056012D+04 <3> 1.66650374D+04 <3> 1.67103922D+04 <3> 1.67441714D+04 <3>    
+ 1.67700380D+04 <3> 1.67903664D+04 <3> 1.68067173D+04 <3> 1.68200539D+04 <3>    
+ 1.68309399D+04 <3> 1.68398384D+04 <3> 1.68472491D+04 <3> 1.68536157D+04 <3>    
+ 1.68586810D+04 <3> 1.68585083D+04 <3> 1.68282358D+04 <3> 1.66209284D+04 <3> )  
+ IDSET ID_47 (PROPERTIES) (91 *2 <10> )                                         
+ LSET L_29 ( %ID_47 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PR2S @L_29 ( 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> )                                                                     
+ IDSET ID_48 (PROPERTIES) (92 *2 <10> )                                         
+ LSET L_30 ( %ID_48 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PR2S @L_30 ( 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 1.54046562D+04 <3> )                                                           
+ IDSET ID_49 (PROPERTIES) (65 *2 <10> )                                         
+ LSET L_31 ( %ID_49 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PR2S @L_31 ( 6.22128537D+04 <3> 0.D0 <3> 0.D0  
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> )                                                            
+ IDSET ID_50 (PROPERTIES) (66 *2 <10> )                                         
+ LSET L_32 ( %ID_50 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PR2S @L_32 ( 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 6.83245423D+04 <3> )                                                           
+ IDSET ID_51 (PROPERTIES) (93 *2 <10> )                                         
+ LSET L_33 ( %ID_51 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PR2S @L_33 ( 9.29296755D+03 <3> 0.D0 <3> 0.D0  
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0   
+ <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 0.D0 <3> )                                                            
+ IDSET ID_52 (PROPERTIES) (61 *2 <39> )                                         
+ LSET L_34 ( %ID_52 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PRO2 @L_34 ( -2.44375009D+08 <1>               
+ -2.45219637D+08 <1> -2.46347098D+08 <1> -2.47721453D+08 <1> -2.49231279D+08 <1>
+ -2.50722607D+08 <1> -2.52036508D+08 <1> -2.53093981D+08 <1> -2.53885090D+08 <1>
+ -2.54446384D+08 <1> -2.54831024D+08 <1> -2.55089100D+08 <1> -2.55258258D+08 <1>
+ -2.55369210D+08 <1> -2.55463205D+08 <1> -2.55533206D+08 <1> -2.55584620D+08 <1>
+ -2.55623766D+08 <1> -2.55654282D+08 <1> -2.55678569D+08 <1> -2.55697998D+08 <1>
+ -2.55713402D+08 <1> -2.55725570D+08 <1> -2.55735457D+08 <1> -2.55743774D+08 <1>
+ -2.55749746D+08 <1> -2.55745176D+08 <1> -2.55679262D+08 <1> -2.55246184D+08 <1>
+ -2.52753083D+08 <1> )                                                          
+ IDSET ID_53 (PROPERTIES) (88 *2 <39> )                                         
+ LSET L_35 ( %ID_53 & %ID_31 )                                                  
+ DSET BLOCK RADFRAC ABSORBER RAD_PRO2 @L_35 ( -3.85898783D+06 <1>               
+ -6.75509824D+06 <1> -1.08491423D+07 <1> -1.62324745D+07 <1> -2.26871890D+07 <1>
+ -2.96473088D+07 <1> -3.63818352D+07 <1> -4.22250392D+07 <1> -4.68594103D+07 <1>
+ -5.02873340D+07 <1> -5.26994673D+07 <1> -5.43425715D+07 <1> -5.54407773D+07 <1>
+ -5.61624364D+07 <1> -5.66337070D+07 <1> -5.70108045D+07 <1> -5.72975191D+07 <1>
+ -5.75107786D+07 <1> -5.76736602D+07 <1> -5.78013683D+07 <1> -5.79038339D+07 <1>
+ -5.79871100D+07 <1> -5.80547941D+07 <1> -5.81099130D+07 <1> -5.81557015D+07 <1>
+ -5.81948486D+07 <1> -5.82250662D+07 <1> -5.82178189D+07 <1> -5.79937957D+07 <1>
+ -5.64804102D+07 <1> )                                                          
+ IDSET ID_54 (PROPERTIES) (36 *2 )                                              
+ LSET L_36 ( %ID_54 & %ID_NCC & %ID_31 )                                        
+ DSET BLOCK RADFRAC ABSORBER TRAY_X @L_36 ( 1.80996923D-03 2.15904762D-03       
+ 4.02667565D-03 9.92004307D-01 1.80470645D-03 2.15554321D-03 9.73602155D-03     
+ 9.86303729D-01 1.78313576D-03 2.15464902D-03 1.73244653D-02 9.78737750D-01     
+ 1.75503217D-03 2.15111202D-03 2.65482845D-02 9.69545571D-01 1.72210215D-03     
+ 2.14417208D-03 3.66507106D-02 9.59483015D-01 1.68840472D-03 2.13522913D-03     
+ 4.65877747D-02 9.49588591D-01 1.65456660D-03 2.12179871D-03 5.53404750D-02     
+ 9.40883160D-01 1.62585911D-03 2.10885545D-03 6.23709539D-02 9.33894332D-01     
+ 1.60358974D-03 2.09798946D-03 6.76225358D-02 9.28675885D-01 1.58746754D-03     
+ 2.08976432D-03 7.13444423D-02 9.24978326D-01 1.57633379D-03 2.08392155D-03     
+ 7.38924444D-02 9.22447300D-01 1.56897068D-03 2.08010401D-03 7.56014306D-02     
+ 9.20749495D-01 1.56480729D-03 2.07877582D-03 7.67276761D-02 9.19628741D-01     
+ 1.55996410D-03 2.07434151D-03 7.74613041D-02 9.18904390D-01 1.55868628D-03     
+ 2.07385637D-03 7.80499693D-02 9.18317488D-01 1.55802132D-03 2.07420082D-03     
+ 7.84983491D-02 9.17869429D-01 1.55744599D-03 2.07439802D-03 7.88320562D-02     
+ 9.17536100D-01 1.55730951D-03 2.07499664D-03 7.90871664D-02 9.17280527D-01     
+ 1.55741148D-03 2.07576870D-03 7.92873730D-02 9.17079447D-01 1.55765555D-03     
+ 2.07662906D-03 7.94481775D-02 9.16917538D-01 1.55808024D-03 2.07769713D-03     
+ 7.95790660D-02 9.16785157D-01 1.55864890D-03 2.07894392D-03 7.96856568D-02     
+ 9.16676750D-01 1.55927716D-03 2.08023796D-03 7.97726205D-02 9.16587864D-01     
+ 1.55986503D-03 2.08141320D-03 7.98449741D-02 9.16513748D-01 1.56042175D-03     
+ 2.08249604D-03 7.99070453D-02 9.16450037D-01 1.56100590D-03 2.08363778D-03     
+ 7.99560562D-02 9.16399300D-01 1.56169290D-03 2.08521648D-03 7.99520972D-02     
+ 9.16400993D-01 1.56258820D-03 2.08883270D-03 7.96432107D-02 9.16705368D-01     
+ 1.56447903D-03 2.10444229D-03 7.75191628D-02 9.18811916D-01 1.57316007D-03     
+ 2.19355530D-03 6.55023483D-02 9.30730936D-01 )                                 
+ IDSET ID_55 (PROPERTIES) (36 *2 )                                              
+ LSET L_37 ( %ID_55 & %ID_NCC & %ID_31 )                                        
+ DSET BLOCK RADFRAC ABSORBER TRAY_MX @L_37 ( 1.58358338D-03 1.35934464D-04      
+ 5.53475914D-03 9.92745723D-01 1.57561026D-03 1.35424293D-04 1.33538376D-02     
+ 9.84935128D-01 1.55237859D-03 1.34985583D-04 2.36949288D-02 9.74617707D-01     
+ 1.52267789D-03 1.34302346D-04 3.61860979D-02 9.62156922D-01 1.48851815D-03     
+ 1.33368257D-04 4.97691194D-02 9.48608994D-01 1.45403782D-03 1.32324800D-04     
+ 6.30308905D-02 9.35382747D-01 1.42029955D-03 1.31068247D-04 7.46312836D-02     
+ 9.23817349D-01 1.39204617D-03 1.29931711D-04 8.38948785D-02 9.14583144D-01     
+ 1.37032966D-03 1.29012771D-04 9.07832182D-02 9.07717439D-01 1.35469903D-03     
+ 1.28331388D-04 9.56490027D-02 9.02867967D-01 1.34394038D-03 1.27852962D-04     
+ 9.89724183D-02 8.99555788D-01 1.33682479D-03 1.27538801D-04 1.01198019D-01     
+ 8.97337618D-01 1.33272876D-03 1.27404915D-04 1.02663316D-01 8.95876550D-01     
+ 1.32824316D-03 1.27098627D-04 1.03616787D-01 8.94927871D-01 1.32687024D-03     
+ 1.27041622D-04 1.04381807D-01 8.94164281D-01 1.32608824D-03 1.27042036D-04     
+ 1.04964366D-01 8.93582504D-01 1.32543788D-03 1.27038713D-04 1.05397806D-01     
+ 8.93149718D-01 1.32519952D-03 1.27063655D-04 1.05729136D-01 8.92818601D-01     
+ 1.32519079D-03 1.27101773D-04 1.05989147D-01 8.92558560D-01 1.32532207D-03     
+ 1.27147125D-04 1.06197985D-01 8.92349546D-01 1.32562171D-03 1.27206599D-04     
+ 1.06367992D-01 8.92179180D-01 1.32605576D-03 1.27278156D-04 1.06506466D-01     
+ 8.92040200D-01 1.32655000D-03 1.27353515D-04 1.06619465D-01 8.91926632D-01     
+ 1.32701675D-03 1.27422259D-04 1.06713484D-01 8.91832077D-01 1.32746182D-03     
+ 1.27485808D-04 1.06794146D-01 8.91750906D-01 1.32793658D-03 1.27553573D-04     
+ 1.06857864D-01 8.91686646D-01 1.32852495D-03 1.27650594D-04 1.06852889D-01     
+ 8.91690935D-01 1.32944034D-03 1.27886760D-04 1.06452387D-01 8.92090286D-01     
+ 1.33209673D-03 1.28943855D-04 1.03694906D-01 8.94844054D-01 1.34548049D-03     
+ 1.35005260D-04 8.80123649D-02 9.10507149D-01 )                                 
+ IDSET ID_56 (PROPERTIES) (39 *2 )                                              
+ LSET L_38 ( %ID_56 & %ID_NCC & %ID_31 )                                        
+ DSET BLOCK RADFRAC ABSORBER TRAY_Y @L_38 ( 2.58851978D-01 7.36067079D-01       
+ 4.99462236D-03 8.63209393D-05 2.58366875D-01 7.29134630D-01 1.24043133D-02     
+ 9.41817809D-05 2.55627282D-01 7.21392862D-01 2.28743765D-02 1.05478889D-04     
+ 2.52005444D-01 7.11240611D-01 3.66325008D-02 1.21443634D-04 2.47664127D-01     
+ 6.99076827D-01 5.31175239D-02 1.41522307D-04 2.42984628D-01 6.85970914D-01     
+ 7.08799947D-02 1.64463529D-04 2.38457343D-01 6.73294114D-01 8.80603812D-02     
+ 1.88162313D-04 2.34527841D-01 6.62302130D-01 1.02960176D-01 2.09853705D-04     
+ 2.31411133D-01 6.53587574D-01 1.14773493D-01 2.27799200D-04 2.29105713D-01     
+ 6.47143428D-01 1.23509382D-01 2.41477414D-04 2.27483488D-01 6.42609717D-01     
+ 1.29655542D-01 2.51252988D-04 2.26378522D-01 6.39521724D-01 1.33841779D-01     
+ 2.57974952D-04 2.25639980D-01 6.37457416D-01 1.36639817D-01 2.62786885D-04     
+ 2.25154979D-01 6.36100469D-01 1.38479354D-01 2.65197393D-04 2.24838367D-01     
+ 6.35218923D-01 1.39676522D-01 2.66187962D-04 2.24586641D-01 6.34510594D-01     
+ 1.40635409D-01 2.67356303D-04 2.24395158D-01 6.33971504D-01 1.41365042D-01     
+ 2.68296016D-04 2.24252650D-01 6.33570586D-01 1.41907742D-01 2.69022536D-04     
+ 2.24143966D-01 6.33264111D-01 1.42322331D-01 2.69592416D-04 2.24058848D-01     
+ 6.33023585D-01 1.42647511D-01 2.70056792D-04 2.23990599D-01 6.32830345D-01     
+ 1.42908562D-01 2.70493669D-04 2.23935184D-01 6.32672967D-01 1.43120920D-01     
+ 2.70929997D-04 2.23890185D-01 6.32544726D-01 1.43293746D-01 2.71343653D-04     
+ 2.23853575D-01 6.32440061D-01 1.43434671D-01 2.71692461D-04 2.23823164D-01     
+ 6.32352965D-01 1.43551885D-01 2.71986169D-04 2.23797094D-01 6.32278173D-01     
+ 1.43652409D-01 2.72323746D-04 2.23776446D-01 6.32218725D-01 1.43731684D-01     
+ 2.73144898D-04 2.23777455D-01 6.32220943D-01 1.43724724D-01 2.76877449D-04     
+ 2.23902427D-01 6.32577203D-01 1.43221226D-01 2.99143913D-04 2.24757534D-01     
+ 6.35019937D-01 1.39752911D-01 4.69617422D-04 )                                 
+ IDSET ID_57 (PROPERTIES) (39 *2 )                                              
+ LSET L_39 ( %ID_57 & %ID_NCC & %ID_31 )                                        
+ DSET BLOCK RADFRAC ABSORBER TRAY_MY @L_39 ( 8.09505519D-01 1.65646908D-01      
+ 2.45387997D-02 3.08772921D-04 7.81907848D-01 1.58790340D-01 5.89757944D-02     
+ 3.26017085D-04 7.43975683D-01 1.51084876D-01 1.04588307D-01 3.51133128D-04     
+ 6.98314994D-01 1.41825918D-01 1.59474167D-01 3.84920392D-04 6.49047103D-01     
+ 1.31836490D-01 2.18692186D-01 4.24221555D-04 6.01610915D-01 1.22219421D-01     
+ 2.75703905D-01 4.65758979D-04 5.60458479D-01 1.13876779D-01 3.25158893D-01     
+ 5.05848083D-04 5.28001126D-01 1.07298638D-01 3.64159840D-01 5.40395602D-04     
+ 5.04145825D-01 1.02464477D-01 3.92822050D-01 5.67647648D-04 4.87472409D-01     
+ 9.90859960D-02 4.12853909D-01 5.87686020D-04 4.76200273D-01 9.68020743D-02     
+ 4.26396056D-01 6.01597078D-04 4.68728813D-01 9.52882488D-02 4.35371970D-01     
+ 6.10968323D-04 4.63824686D-01 9.42945513D-02 4.41262894D-01 6.17868729D-04     
+ 4.60640343D-01 9.36491293D-02 4.45089938D-01 6.20589449D-04 4.58583535D-01     
+ 9.32328748D-02 4.47562591D-01 6.20999383D-04 4.56946990D-01 9.29005728D-02     
+ 4.49530242D-01 6.22195765D-04 4.55707102D-01 9.26487715D-02 4.51020907D-01     
+ 6.23219826D-04 4.54787741D-01 9.24621071D-02 4.52126109D-01 6.24043051D-04     
+ 4.54087318D-01 9.23197907D-02 4.52968187D-01 6.24704615D-04 4.53539114D-01     
+ 9.22083293D-02 4.53627295D-01 6.25262634D-04 4.53099710D-01 9.21189339D-02     
+ 4.54155498D-01 6.25858019D-04 4.52742741D-01 9.20462403D-02 4.54584490D-01     
+ 6.26528710D-04 4.52452569D-01 9.19870849D-02 4.54933136D-01 6.27209161D-04     
+ 4.52216233D-01 9.19388565D-02 4.55217121D-01 6.27790040D-04 4.52019832D-01     
+ 9.18987558D-02 4.55453131D-01 6.28281108D-04 4.51851419D-01 9.18643511D-02     
+ 4.55655330D-01 6.28899780D-04 4.51718022D-01 9.18370687D-02 4.55814242D-01     
+ 6.30668092D-04 4.51725071D-01 9.18384097D-02 4.55797226D-01 6.39293324D-04     
+ 4.52539087D-01 9.20043679D-02 4.54764981D-01 6.91563698D-04 4.58177992D-01     
+ 9.31547362D-02 4.47572259D-01 1.09501203D-03 )                                 
+ IDSET ID_58 (PROPERTIES) (40 *2 )                                              
+ LSET L_40 ( %ID_58 & %ID_NCC & %ID_31 )                                        
+ DSET BLOCK RADFRAC ABSORBER TRAYB_K @L_40 ( 1.43002202D+02 3.40874814D+02      
+ 1.24046718D+00 8.70575114D-05 1.43128207D+02 3.38139845D+02 1.27418805D+00     
+ 9.55820996D-05 1.43300339D+02 3.34614341D+02 1.32053217D+00 1.08087003D-04     
+ 1.43517454D+02 3.30401806D+02 1.38001642D+00 1.25466811D-04 1.43751254D+02     
+ 3.25828776D+02 1.44947210D+00 1.47713853D-04 1.43965653D+02 3.21394373D+02     
+ 1.52157267D+00 1.73091384D-04 1.44135395D+02 3.17340227D+02 1.59145430D+00     
+ 2.00010461D-04 1.44246899D+02 3.14027253D+02 1.65101015D+00 2.24804640D-04     
+ 1.44304574D+02 3.11494225D+02 1.69751870D+00 2.45409133D-04 1.44319971D+02     
+ 3.09642764D+02 1.73143034D+00 2.61174761D-04 1.44305245D+02 3.08322662D+02     
+ 1.75490533D+00 2.72511711D-04 1.44270242D+02 3.07383613D+02 1.77060835D+00     
+ 2.80348964D-04 1.44221983D+02 3.06696132D+02 1.78106611D+00 2.85743256D-04     
+ 1.44165047D+02 3.06175527D+02 1.78799503D+00 2.89456728D-04 1.44103031D+02     
+ 3.05892727D+02 1.78975316D+00 2.90579955D-04 1.44038861D+02 3.05603822D+02     
+ 1.79166850D+00 2.91804908D-04 1.43972714D+02 3.05329161D+02 1.79329245D+00     
+ 2.92899652D-04 1.43905055D+02 3.05082397D+02 1.79431855D+00 2.93701169D-04     
+ 1.43836383D+02 3.04852508D+02 1.79498558D+00 2.94327303D-04 1.43767026D+02     
+ 3.04633483D+02 1.79542352D+00 2.94841891D-04 1.43697194D+02 3.04420710D+02     
+ 1.79573273D+00 2.95294805D-04 1.43627014D+02 3.04211028D+02 1.79598230D+00     
+ 2.95720657D-04 1.43556562D+02 3.04003342D+02 1.79619590D+00 2.96131011D-04     
+ 1.43485913D+02 3.03799008D+02 1.79634264D+00 2.96509130D-04 1.43415140D+02     
+ 3.03597923D+02 1.79642406D+00 2.96855106D-04 1.43344274D+02 3.03393308D+02     
+ 1.79659110D+00 2.97247239D-04 1.43273093D+02 3.03147941D+02 1.79767842D+00     
+ 2.98123046D-04 1.43199901D+02 3.02645338D+02 1.80457032D+00 3.02062099D-04     
+ 1.43112180D+02 3.00583108D+02 1.84753256D+00 3.25584045D-04 1.42861231D+02     
+ 2.89472236D+02 2.13354440D+00 5.04621291D-04 )                                 
+ IDSET ID_59 (PROPERTIES) (253 *2)                                              
+ IDSET ID_60 (PROPERTIES) (8101 *2 <11> 8002 *2 8103 *2 <10> 8004 *2 )          
+ IDSET ID_61 (PROPERTIES) (8001 *2 <11> 8003 *2 <10> 8010 *2 <12> 7001 *2 <22>  
+ 7002 *2 <20> 7003 *2 7004 *2 7006 *2 2002 *2 <39> 2002 *2 <40> 2002 *2 <13>    
+ 2003 *2 <41> 2003 *2 <42> 11006 *2 <37> 11006 *2 <38> 11007 *2 8005 *2 <12> )  
+ LSET L_41 ( %ISODES (( %ID_NCC & %ID_60 %ID_61) & %IDS_1) )                    
+ DSET STREAM MATERIAL G-IN STR_MAIN @L_41 (* ABSORBER VAPOR 2.71820490D+02 <3>  
+ 7.68188341D+02 <3> 1.41819386D+02 <3> 0.D0 <3> 2.30000000D-01 6.50000000D-01   
+ 1.20000000D-01 0.D0 7.61463786D+03 <3> 1.54857551D+03 <3> 6.24144282D+03 <3>   
+ 0.D0 <3> 4.94307550D-01 1.00526457D-01 4.05165993D-01 0.D0 1.18182822D+03 <3>  
+ 1.54046562D+04 <3> 1.00000000D+03 <7> 2.00000000D+01 <4> 2.90000000D+01 <5>    
+ 1.00000000D+00 0.D0 0.D0 -4.74256593D+07 <1> -3.63844422D+06 <1>               
+ -1.55691619D+07 <1> -2.10320065D+04 <1> -1.61355232D+03 <1> 1.18182813D+00 <1> 
+ 1.54046551D+01 <1> 1.30345984D+01 6.32961147D+01 <7> )                         
+ DSET STREAM MATERIAL G-IN RES_STR @L_1 (2.00000000D+01 <4> 2.90000000D+01 <5>  
+ 1.54046562D+04 <3> )                                                           
+ DSET STREAM MATERIAL G-OUT STR_MAIN @L_41 (ABSORBER * VAPOR 2.68538879D+02 <3> 
+ 7.63612586D+02 <3> 5.18153386D+00 <3> 8.95512891D-02 <3> 2.58851978D-01        
+ 7.36067079D-01 4.99462236D-03 8.63209393D-05 7.52270852D+03 <3> 1.53935134D+03 
+ <3> 2.28038269D+02 <3> 2.86941673D+00 <3> 8.09505519D-01 1.65646908D-01        
+ 2.45387997D-02 3.08772921D-04 1.03742255D+03 <3> 9.29296755D+03 <3>            
+ 7.29220425D+02 <7> -3.93455861D+01 <4> 2.80000000D+01 <5> 1.00000000D+00 0.D0  
+ 0.D0 -3.85898783D+06 <1> -4.30798987D+05 <1> -1.11205584D+06 <1>               
+ -2.97807694D+04 <1> -3.32458298D+03 <1> 1.42264594D+00 <1> 1.27437007D+01 <1>  
+ 8.95774585D+00 5.55608813D+01 <7> )                                            
+ DSET STREAM MATERIAL G-OUT RES_STR @L_1 (-3.93455861D+01 <4> 2.80000000D+01 <5>
+ 9.29296755D+03 <3> )                                                           
+ DSET STREAM MATERIAL L-IN STR_MAIN @L_41 (* ABSORBER LIQUID 0.D0 <3> 0.D0 <3>  
+ 0.D0 <3> 1.94159363D+03 <3> 0.D0 0.D0 0.D0 1.00000000D+00 0.D0 <3> 0.D0 <3>    
+ 0.D0 <3> 6.22128537D+04 <3> 0.D0 0.D0 0.D0 1.00000000D+00 1.94159363D+03 <3>   
+ 6.22128537D+04 <3> 7.13385414D+01 <7> -4.00000000D+01 <4> 2.90000000D+01 <5>   
+ 0.D0 1.00000000D+00 0.D0 -2.44745508D+08 <1> -7.63823377D+06 <1>               
+ -1.31998979D+08 <1> -2.63852709D+05 <1> -8.23454815D+03 <1> 2.72166132D+01 <1> 
+ 8.72079075D+02 <1> 3.20421600D+01 7.83133967D+01 <7> )                         
+ DSET STREAM MATERIAL L-IN RES_STR @L_1 (-4.00000000D+01 <4> 2.90000000D+01 <5> 
+ 6.22128537D+04 <3> )                                                           
+ DSET STREAM MATERIAL L-OUT STR_MAIN @L_41 (ABSORBER * LIQUID 3.28161080D+00 <3>
+ 4.57575481D+00 <3> 1.36637852D+02 <3> 1.94150408D+03 <3> 1.57316007D-03        
+ 2.19355530D-03 6.55023483D-02 9.30730936D-01 9.19293386D+01 <3> 9.22417260D+00 
+ <3> 6.01340455D+03 <3> 6.22099842D+04 <3> 1.34548049D-03 1.35005260D-04        
+ 8.80123649D-02 9.10507149D-01 2.08599929D+03 <3> 6.83245423D+04 <3>            
+ 7.91919139D+01 <7> -1.85380756D+01 <4> 2.84350000D+01 <5> 0.D0 1.00000000D+00  
+ 0.D0 -2.52753083D+08 <1> -7.71674034D+06 <1> -1.46456321D+08 <1>               
+ -2.42246213D+05 <1> -7.39595776D+03 <1> 2.63410624D+01 <1> 8.62771640D+02 <1>  
+ 3.27538665D+01 8.60486301D+01 <7> )                                            
+ DSET STREAM MATERIAL L-OUT RES_STR @L_1 (-1.85380756D+01 <4> 2.84350000D+01 <5>
+ 6.83245423D+04 <3> )                                                           
+ IDSET RSTAT (PROPERTIES) (739 *1)                                              
+ LSET RSTAT ( %RSTAT)                                                           
+ DSET RUN-STATUS RPTSTAT @RSTAT (0)                                             
+ DSET RUN-STATUS OLDSTAT @STATUS ( 0 0 0 2 0 0 )                                
+ DSET RUN-STATUS STATUS @STATUS ( 8 * * * * * )                                 
+ DSET RUN-STATUS COMPSTAT @L_1 (0)                                              
+ IDSET TSTAT (PROPERTIES) (741 *1)                                              
+ LSET TSTAT ( %TSTAT)                                                           
+ DSET RUN-STATUS TOTSTAT @TSTAT (0)                                             
+ DSET SPSTAT @SPSTAT (0)                                                        
